@@ -16,6 +16,15 @@ app.use(cors());
 
 // =================================================
 
+// connection
+main().catch((error) => {
+   console.log(error);
+});
+
+async function main() {
+   await mongoose.connect(process.env.DB_STRING);
+}
+
 // listen server
 const port = process.env.PORT;
 app.listen(port || 5000, () => console.log(`server listening on port: ${port}`));
