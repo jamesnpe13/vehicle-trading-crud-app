@@ -16,6 +16,7 @@ app.use(cors());
 const Listing = require("./models/listing");
 const Member = require("./models/member");
 const Comment = require("./models/comment");
+const { findById } = require("./models/listing");
 
 // ============== HTTP requests here ===============
 
@@ -69,6 +70,14 @@ app.get("/listings/:member/listings", async (req, res) => {
 
     res.json(result);
 });
+
+// delete listings by member
+
+app.delete("/listings/:id", async (req, res) => {
+  await Listing.findByIdAndRemove(req.params.id)
+  res.status(204).end()
+})
+
 
 // =================================================
 // ============== POST requests ===============
