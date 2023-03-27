@@ -38,6 +38,19 @@ app.get("/members/:username", async (req, res) => {
     }
 });
 
+app.post("/members", async (req, res) => {
+    try {
+        const newMember = await Member.create({
+            username: req.body.username,
+            password: req.body.password,
+            display_name: req.body.display_name,
+        });
+        res.json(newMember);
+    } catch (error) {
+        res.send(error);
+    }
+});
+
 // =================================================
 
 // connection
