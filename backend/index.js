@@ -18,7 +18,7 @@ const Member = require("./models/member");
 const Comment = require("./models/comment");
 const { findById } = require("./models/listing");
 
-// ============== HTTP requests here ===============
+
 
 // ============== GET requests ===============
 
@@ -71,15 +71,6 @@ app.get("/listings/:member/listings", async (req, res) => {
     res.json(result);
 });
 
-// delete listings by member
-
-app.delete("/listings/:id", async (req, res) => {
-  await Listing.findByIdAndRemove(req.params.id)
-  res.status(204).end()
-})
-
-
-// =================================================
 // ============== POST requests ===============
 // new listing
 app.post("/listings", async (req, res) => {
@@ -138,6 +129,16 @@ app.post("/members", async (req, res) => {
 app.post("/listings/:id/comments", async (req, res) => {
     const newComment = await comment.create({});
 });
+
+// ============== DELETE requests ===============
+
+// delete listings by member
+
+app.delete("/listings/:id", async (req, res) => {
+   await Listing.findByIdAndRemove(req.params.id)
+   res.status(204).end()
+ })
+ 
 
 // ============================================
 
