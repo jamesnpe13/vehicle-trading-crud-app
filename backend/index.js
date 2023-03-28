@@ -17,6 +17,7 @@ const Listing = require("./models/listing");
 const Member = require("./models/member");
 const Comment = require("./models/comment");
 const { findById } = require("./models/listing");
+const Bookmark = require("./models/bookmark");
 
 // ============== GET requests ===============
 
@@ -176,8 +177,8 @@ app.delete("/listings/:id", async (req, res) => {
 // ============== PUT requests ===============
 
 app.put("/members/:id/bookmarks", async (req, res) =>{
-    const newBookmark = "newbookmark;"
-    const body = req.body.id;
+    const newBookmark = req.body.listing_id
+
     const targetUser = await Member.findById(req.params.id)
     const bookmarksArray = targetUser.bookmarks.concat(newBookmark);
     
