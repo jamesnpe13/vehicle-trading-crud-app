@@ -1,6 +1,9 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-// const listingSchema = new mongoose.Schema({
-// });
+const commentSchema = new mongoose.Schema({
+    display_name: { type: String, required: true },
+    comment: { type: String, required: true },
+    post_date: { type: String },
+});
 
-// module.exports = mongoose.model("Listing", listingSchema);
+module.exports = mongoose.model("Comment", commentSchema);
