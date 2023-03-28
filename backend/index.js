@@ -33,9 +33,22 @@ app.get("/members", async (req, res) => {
 // single member
 app.get("/members/:username", async (req, res) => {
    try {
-      const result = await Member.find({ username: req.params.username });
+      const result = await Member.findOne({ username: req.params.username });
       if (result.length > 0) {
          res.json(result);
+      } else {
+         res.send("no match found");
+      }
+   } catch (error) {
+      res.send(error);
+   }
+});
+
+app.get("/signin/:username", async (req, res) => {
+   try {
+      const result = await Member.find({ username: req.params.username });
+      if (result.length > 0) {
+         res.json(result[0]);
       } else {
          res.send("no match found");
       }
