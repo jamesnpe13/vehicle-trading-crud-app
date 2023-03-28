@@ -118,10 +118,14 @@ app.post("/members", async (req, res) => {
    }
 });
 
-// Post comment
+// update comments array by listing
 app.put("/listings/:id/comments", async (req, res) => {
    // new array item/object
-   const newComment = "james";
+   const newComment = {
+      owner_id: "asdhasdkjbasduh123124",
+      display_name: "Ellie Saxby",
+      body: "Where can I view the car? thanks",
+   };
 
    // target document
    const targetListing = await Listing.findById(req.params.id);
@@ -137,6 +141,14 @@ app.put("/listings/:id/comments", async (req, res) => {
 
    // response
    res.json(targetListing);
+});
+
+// get all comments by listing
+app.get("/listings/:id/comments", async (req, res) => {
+   const targetListing = await Listing.findById(req.params.id);
+   const commentsArray = targetListing.comments;
+
+   res.json(commentsArray);
 });
 
 // ============== DELETE requests ===============
