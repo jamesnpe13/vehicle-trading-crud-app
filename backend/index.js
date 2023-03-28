@@ -138,6 +138,32 @@ app.delete("/listings/:id", async (req, res) => {
    await Listing.findByIdAndRemove(req.params.id)
    res.status(204).end()
  })
+
+// ============== PUT requests ===============
+
+app.put("/members/:id/bookmarks", async (req, res) =>{
+    const newBookmark = "newbookmark;"
+    const body = req.body.id;
+    const targetUser = await Member.findById(req.params.id)
+    const bookmarksArray = targetUser.bookmarks.concat(newBookmark);
+    
+    targetUser.bookmarks = bookmarksArray;
+
+    await targetUser.save();
+
+    res.json(targetUser);
+   
+    // const itemObj = 
+    // {
+    //     bookmarks:[
+    //     {
+    //         type:mongoose.Types.ObjectId,
+    //         ref:"Listing",
+    //     },
+    // ]
+    // }
+});
+
  
 
 // ============================================
