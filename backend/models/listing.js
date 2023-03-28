@@ -29,13 +29,7 @@ const listingSchema = new mongoose.Schema({
          expiration: Date,
       }),
    }),
-   comments: [
-      {
-         member_display_name: String,
-         body: String,
-         post_date: String,
-      },
-   ],
+   comments: [],
 });
 
 module.exports = mongoose.model("Listing", listingSchema);
