@@ -88,8 +88,8 @@ app.post("/listings", async (req, res) => {
          color: "Silver",
          registration: {
             valid: true,
-            // registration_number: "KWD125",
-            // expiration: "26/09/2023",
+            registration_number: "KWD125",
+            expiration: "26/09/2023",
          },
          wof: {
             valid: true,
@@ -98,7 +98,7 @@ app.post("/listings", async (req, res) => {
       },
       comments: [],
    }).catch((err) => {
-      res.json(err);
+      res.json(error);
    });
 
    res.json(newListing);
@@ -119,8 +119,24 @@ app.post("/members", async (req, res) => {
 });
 
 // Post comment
-app.post("/listings/:id/comments", async (req, res) => {
-   const newComment = await comment.create({});
+app.put("/listings/:id/comments", async (req, res) => {
+   // new array item/object
+   const newComment = "james";
+
+   // target document
+   const targetListing = await Listing.findById(req.params.id);
+
+   // existing array concatinated with new array item
+   const commentsArray = targetListing.comments.concat(newComment);
+
+   // manual key-value change
+   targetListing.comments = commentsArray;
+
+   // save changes
+   await targetListing.save();
+
+   // response
+   res.json(targetListing);
 });
 
 // ============== DELETE requests ===============
