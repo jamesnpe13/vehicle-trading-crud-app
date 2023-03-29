@@ -18,6 +18,8 @@ const Member = require("./models/member");
 const Comment = require("./models/comment");
 const Bookmark = require("./models/bookmark");
 const Rating = require("./models/rating");
+const member = require("./models/member");
+const listing = require("./models/listing");
 
 // ============== GET requests ===============
 
@@ -248,7 +250,25 @@ app.put("/members/:id/bookmarks", async (req, res) => {
 
    await targetUser.save();
 
-   res.json(bookmarksArray);
+   res.json(targetUser);
+});
+
+//edit listing
+app.put("/listings/:id/editlisting", async (req, res) => {
+   const findListing = await listing.findById(req.params.id);
+   const output = findListing.overwrite(req.body);
+   output.save();
+
+   res.json(output);
+});
+
+//edit user
+app.put("/members/:id/edituser", async (req, res) => {
+   const findUser = await Member.findById(req.params.id);
+   const userOutput = findUser.overwrite(req.body);
+   userOutput.save();
+
+   res.json(userOutput);
 });
 
 // ============================================
