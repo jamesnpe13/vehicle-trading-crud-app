@@ -26,7 +26,7 @@ const listingSchema = new mongoose.Schema({
 
       wof: new mongoose.Schema({
          valid: Boolean,
-         expiration: Date,
+         expiration: { type: String, required: true },
       }),
    }),
    comments: [],
