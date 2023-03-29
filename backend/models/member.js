@@ -7,7 +7,9 @@ const MemberSchema = new mongoose.Schema({
    password: { type: String, required: true },
    display_name: { type: String, required: true },
    bookmarks: [],
-   ratings: [],
+   ratings: [
+      // new schema here (do not export)
+   ],
 });
 
 module.exports = mongoose.model("member", MemberSchema);
