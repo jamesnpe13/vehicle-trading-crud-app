@@ -16,7 +16,6 @@ app.use(cors());
 const Listing = require("./models/listing");
 const Member = require("./models/member");
 const Comment = require("./models/comment");
-const { findById } = require("./models/listing");
 const Bookmark = require("./models/bookmark");
 const Rating = require("./models/rating");
 
@@ -149,9 +148,11 @@ app.post("/members", async (req, res) => {
 // update comments array by listing
 app.put("/listings/:id/comments", async (req, res) => {
    // new array item/object
+   const date = new Date();
    const newComment = {
       owner_id: req.body.owner_id,
       body: req.body.body,
+      post_date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
    };
 
    // target document
@@ -207,10 +208,10 @@ app.get("/members/:id/ratings/calculate", async (req, res) => {
 
 // post rating
 app.put("/members/:id/ratings", async (req, res) => {
-   const newRating = new Rating({
+   const newRating = {
       rating: req.body.rating,
       memberId: req.body.user_id,
-   });
+   };
    const targetMember = await Member.findById(req.params.id);
    const ratingsArray = targetMember.ratings.concat(newRating);
    targetMember.ratings = ratingsArray;
@@ -236,7 +237,9 @@ app.get("/members/:id/bookmarks", async (req, res) => {
 });
 
 app.put("/members/:id/bookmarks", async (req, res) => {
-   const newBookmark = req.body.listing_id;
+   const newBookmark = {
+      listing_id: req.body.listing_id,
+   };
 
    const targetUser = await Member.findById(req.params.id);
    const bookmarksArray = targetUser.bookmarks.concat(newBookmark);
@@ -245,7 +248,7 @@ app.put("/members/:id/bookmarks", async (req, res) => {
 
    await targetUser.save();
 
-   res.json(targetUser);
+   res.json(bookmarksArray);
 });
 
 // ============================================

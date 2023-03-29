@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const ratingSchema = new mongoose.Schema({
-    rating: { type: Number },
-    memberId: { type: String },
-});
+// const ratingSchema = new mongoose.Schema({
+//     rating: { type: Number },
+//     memberId: { type: String },
+// });
 
-module.exports = mongoose.model("rating", ratingSchema);
+// module.exports = mongoose.model("rating", ratingSchema);
