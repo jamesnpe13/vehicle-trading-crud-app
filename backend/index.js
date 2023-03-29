@@ -33,14 +33,27 @@ app.get("/members", async (req, res) => {
 });
 
 // single member
-app.get("/members/:username", async (req, res) => {
+// app.get("/members/:username", async (req, res) => {
+//    try {
+//       const result = await Member.find({ username: req.params.username });
+//       if (result.length > 0) {
+//          res.json(result);
+//       } else {
+//          res.send("no match found");
+//       }
+//    } catch (error) {
+//       res.send(error);
+//    }
+// });
+
+app.get("/members/:id", async (req, res) => {
    try {
-      const result = await Member.find({ username: req.params.username });
-      if (result.length > 0) {
-         res.json(result);
-      } else {
-         res.send("no match found");
-      }
+      const result = await Member.findById(req.params.id);
+      res.json(result);
+      // if (result.length > 0) {
+      // } else {
+      //    res.send("no match found");
+      // }
    } catch (error) {
       res.send(error);
    }
@@ -164,6 +177,33 @@ app.get("/listings/:id/comments", async (req, res) => {
 
    res.json(commentsArray);
 });
+
+app.get("/members/:id/ratings", async (req, res) => {
+   const targetUser = await Member.findById(req.params.id);
+   const ratingsArray = targetUser.ratings;
+
+   res.json(ratingsArray);
+});
+
+// ===================================================================
+app.get("/members/:id/ratings/calculate", async (req, res) => {
+   const targetUser = await Member.findById(req.params.id);
+   const ratingsArray = targetUser.ratings;
+   let sum = 0;
+   let averageRating;
+
+   ratingsArray.forEach((item) => {
+      sum += item.rating;
+   });
+
+   averageRating = parseFloat((sum / ratingsArray.length).toFixed(1));
+
+   res.json({
+      average: averageRating,
+      all_ratings: ratingsArray,
+   });
+});
+// ===================================================================
 
 // post rating
 app.put("/members/:id/ratings", async (req, res) => {
