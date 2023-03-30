@@ -1,8 +1,17 @@
+// libraries
 import "./App.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
+
+// components
+
+
+// page router
+import PageRouter from "./Router";
 
 function App() {
+
    // basic sign in
    const [currentUserID, setCurrentUserID] = useState("");
    const [username, setUsername] = useState("");
@@ -37,13 +46,19 @@ function App() {
    }
 
    return (
+      <BrowserRouter>
+
       <div className="App">
-         <form onSubmit={handleSubmit}>
+         <PageRouter />
+
+         {/* <form onSubmit={handleSubmit}>
             <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} />
             <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
             <button type="submit">Sign in</button>
-         </form>
+         </form> */}
+        
       </div>
+      </BrowserRouter>
    );
 }
 
