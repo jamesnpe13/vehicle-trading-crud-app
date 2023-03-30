@@ -20,9 +20,9 @@ export default function PageRouter({ postsData, fetchAllPosts }) {
          <Route path="/" element={<Signin  />} />
          <Route path="/listings" element={<Home  />} />
          <Route path="/listings/:id" element={<Home  />} />
-         <Route path="/myListing" element={<MyListing  />} />
+         <Route path="/myListings" element={<MyListing  />} />
          <Route path="/listings/:id/purchase" element={<Purchase  />} />
-         <Route path="/mylisting/:id/edit" element={<EditList   />} />
+         <Route path="/mylistings/:id/edit" element={<EditList   />} />
          <Route path="/listings/create" element={<CreateList />} />
          <Route path="/search" element={<Search />} />
          <Route path="*" element={<Notfound />} />
