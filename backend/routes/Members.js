@@ -3,7 +3,8 @@ const router = express.Router();
 
 const Member = require("../models/member");
 
-router.get("", async (req, res) => {
+// get all members
+router.get("/", async (req, res) => {
    try {
       const result = await Member.find({});
       res.json(result);
@@ -12,19 +13,17 @@ router.get("", async (req, res) => {
    }
 });
 
+// get a member
 router.get("/:id", async (req, res) => {
    try {
       const result = await Member.findById(req.params.id);
       res.json(result);
-      // if (result.length > 0) {
-      // } else {
-      //    res.send("no match found");
-      // }
    } catch (error) {
       res.send(error);
    }
 });
 
+// get member by username - sign in authentication
 router.get("/signin/:username", async (req, res) => {
    try {
       const result = await Member.find({ username: req.params.username });
@@ -38,6 +37,7 @@ router.get("/signin/:username", async (req, res) => {
    }
 });
 
+// make a new rating
 router.put("/:id/ratings", async (req, res) => {
    const newRating = {
       rating: req.body.rating,
@@ -50,6 +50,7 @@ router.put("/:id/ratings", async (req, res) => {
    res.json(ratingsArray);
 });
 
+// get a members average rating - example code
 router.get("/:id/ratings/calculate", async (req, res) => {
    const targetUser = await Member.findById(req.params.id);
    const ratingsArray = targetUser.ratings;
@@ -68,19 +69,16 @@ router.get("/:id/ratings/calculate", async (req, res) => {
    });
 });
 
+// get a members listing bookmarks
 router.get("/:id/bookmarks", async (req, res) => {
    const bookmarksArray = await Member.findById(req.params.id).select("bookmarks").populate("bookmarks");
 
    res.json(bookmarksArray);
 });
 
+// add a listing bookmark
 router.put("/:id/bookmarks", async (req, res) => {
-   // const newBookmark = {
-   //    listing_id: req.body.listing_id,
-   // };
-
    const targetUser = await Member.findById(req.params.id);
-   // const bookmarksArray = targetUser.bookmarks.concat(newBookmark);
 
    targetUser.bookmarks = [...targetUser.bookmarks, req.body.listing_id];
 
@@ -89,6 +87,7 @@ router.put("/:id/bookmarks", async (req, res) => {
    res.json(targetUser);
 });
 
+// edit user
 router.put("/:id/edituser", async (req, res) => {
    const findUser = await Member.findById(req.params.id);
    const userOutput = findUser.overwrite(req.body);
@@ -97,6 +96,7 @@ router.put("/:id/edituser", async (req, res) => {
    res.json(userOutput);
 });
 
+// get a user's ratings
 router.get("/:id/ratings", async (req, res) => {
    const targetUser = await Member.findById(req.params.id);
    const ratingsArray = targetUser.ratings;
@@ -104,6 +104,7 @@ router.get("/:id/ratings", async (req, res) => {
    res.json(ratingsArray);
 });
 
+// create a new member
 router.post("/", async (req, res) => {
    try {
       const newMember = await Member.create({
@@ -117,6 +118,7 @@ router.post("/", async (req, res) => {
    }
 });
 
+// get member's listings
 router.get("/:id/listings", async (req, res) => {
    const listingsArray = await Member.findById(req.params.id).select("listings").populate("listings");
 
