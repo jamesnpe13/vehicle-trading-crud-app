@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const commentSchema = require("./comment");
 
 const listingSchema = new mongoose.Schema({
    owner_id: {
