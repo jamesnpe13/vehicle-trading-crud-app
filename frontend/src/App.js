@@ -20,7 +20,7 @@ function App() {
    function handleSubmit(e) {
       e.preventDefault();
 
-      axios.get(`http://localhost:5000/signin/${username}`).then((response) => {
+      axios.get(`http://localhost:5000/members/signin/${username}`).then((response) => {
          console.log(response.data);
 
          if (password === response.data.password) {

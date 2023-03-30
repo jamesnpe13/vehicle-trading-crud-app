@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const commentSchema = require("./comment");
 
 const listingSchema = new mongoose.Schema({
    owner_id: {
@@ -29,7 +30,13 @@ const listingSchema = new mongoose.Schema({
          expiration: { type: String, required: true },
       }),
    }),
-   comments: [],
+   comments: [
+      new mongoose.Schema({
+         owner_id: String,
+         body: String,
+         post_date: String,
+      }),
+   ],
 });
 
 module.exports = mongoose.model("Listing", listingSchema);
