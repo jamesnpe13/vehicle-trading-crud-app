@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Listing = require("../models/listing");
+const Member = require("../models/member");
 
 router.get("/", async (req, res) => {
    const result = await Listing.find({});
@@ -27,6 +28,8 @@ router.get("/:member/listings", async (req, res) => {
 
 router.post("/", async (req, res) => {
    const date = new Date();
+
+   const targetUser = await Member.findById(req.body.owner_id);
    const newListing = await Listing.create({
       owner_id: req.body.owner_id,
       title: req.body.title,
@@ -55,8 +58,14 @@ router.post("/", async (req, res) => {
       res.json(err);
    });
 
+   targetUser.listings = [...targetUser.listings, newListing];
+   targetUser.save();
+
+   console.log(targetUser.listings);
    res.json(newListing);
 });
+
+
 
 router.put("/:id/comments", async (req, res) => {
    // new array item/object
@@ -89,7 +98,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.put("/:id/editlisting", async (req, res) => {
-   const findListing = await listing.findById(req.params.id);
+   const findListing = await Listing.findById(req.params.id);
    const output = findListing.overwrite(req.body);
    output.save();
 

@@ -69,21 +69,20 @@ router.get("/:id/ratings/calculate", async (req, res) => {
 });
 
 router.get("/:id/bookmarks", async (req, res) => {
-   const targetUser = await Member.findById(req.params.id);
-   const bookmarksArray = targetUser.bookmarks;
+   const bookmarksArray = await Member.findById(req.params.id).select("bookmarks").populate("bookmarks");
 
    res.json(bookmarksArray);
 });
 
 router.put("/:id/bookmarks", async (req, res) => {
-   const newBookmark = {
-      listing_id: req.body.listing_id,
-   };
+   // const newBookmark = {
+   //    listing_id: req.body.listing_id,
+   // };
 
    const targetUser = await Member.findById(req.params.id);
-   const bookmarksArray = targetUser.bookmarks.concat(newBookmark);
+   // const bookmarksArray = targetUser.bookmarks.concat(newBookmark);
 
-   targetUser.bookmarks = bookmarksArray;
+   targetUser.bookmarks = [...targetUser.bookmarks, req.body.listing_id];
 
    await targetUser.save();
 
@@ -116,6 +115,12 @@ router.post("/", async (req, res) => {
    } catch (error) {
       res.send(error);
    }
+});
+
+router.get("/:id/listings", async (req, res) => {
+   const listingsArray = await Member.findById(req.params.id).select("listings").populate("listings");
+
+   res.json(listingsArray);
 });
 
 module.exports = router;
