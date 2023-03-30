@@ -4,12 +4,14 @@ const router = express.Router();
 const Listing = require("../models/listing");
 const Member = require("../models/member");
 
+// get all listings
 router.get("/", async (req, res) => {
    const result = await Listing.find({});
 
    res.json(result);
 });
 
+// get a listing by ID
 router.get("/:id", async (req, res) => {
    try {
       const result = await Listing.find({ _id: req.params.id });
@@ -20,12 +22,15 @@ router.get("/:id", async (req, res) => {
    }
 });
 
+// i dont know what this code is for? who the heck wrote this
+// get all listings by a member
 router.get("/:member/listings", async (req, res) => {
    const result = await Listing.find({ member: req.params.member });
 
    res.json(result);
 });
 
+// create a new listing
 router.post("/", async (req, res) => {
    const date = new Date();
 
@@ -53,7 +58,6 @@ router.post("/", async (req, res) => {
             expiration: req.body.vehicle.wof.expiration,
          },
       },
-      comments: [],
    }).catch((err) => {
       res.json(err);
    });
@@ -61,12 +65,10 @@ router.post("/", async (req, res) => {
    targetUser.listings = [...targetUser.listings, newListing];
    targetUser.save();
 
-   console.log(targetUser.listings);
    res.json(newListing);
 });
 
-
-
+// get all comments in a listing
 router.put("/:id/comments", async (req, res) => {
    // new array item/object
    const date = new Date();
@@ -92,6 +94,7 @@ router.put("/:id/comments", async (req, res) => {
    res.json(targetListing);
 });
 
+// delete a listing
 router.delete("/:id", async (req, res) => {
    await Listing.findByIdAndRemove(req.params.id);
    res.status(204).end();
