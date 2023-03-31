@@ -5,6 +5,7 @@ import axios from "axios";
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 
 // components
+import Navbar from "./components/Navbar";
 
 
 // page router
@@ -50,6 +51,7 @@ function App() {
 
       <div className="App">
          <PageRouter />
+         <Navbar />
 
          {/* <form onSubmit={handleSubmit}>
             <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} />
