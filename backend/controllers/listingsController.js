@@ -15,6 +15,7 @@ const Member = require("../models/member");
 // get all listings
 exports.getAllListings = async (req, res) => {
 	const result = await Listing.find({});
+
 	res.json(result);
 };
 
