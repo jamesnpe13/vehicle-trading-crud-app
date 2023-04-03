@@ -1,0 +1,48 @@
+@use "../base/colours" as cols;
+
+.card {
+    max-width: 700px;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 5px cols.$disabled-button;
+    margin: 30px;
+}
+.card img {
+    max-width: 300px;
+    padding: 10px;
+}
+.card-info {
+    display: flex;
+    flex-direction: column;
+}
+.list-title {
+    padding-bottom: 20px;
+    color: cols.$nav-blue;
+}
+.specs {
+    color: cols.$grey-text;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.price {
+    color: cols.$primary-button;
+    font-size: 1.5rem;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+hr {
+    display: block;
+    height: 150px;
+    border: 0.5px solid cols.$disabled-button;
+}
+.detail-specs {
+}
+.card-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
