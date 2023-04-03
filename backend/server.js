@@ -20,11 +20,11 @@ app.use("/listings", listings);
 
 // connection
 main().catch((error) => {
-   console.log(error);
+	console.log(error);
 });
 
 async function main() {
-   await mongoose.connect(process.env.DB_STRING);
+	await mongoose.connect(process.env.DB_STRING);
 }
 
 // listen server
