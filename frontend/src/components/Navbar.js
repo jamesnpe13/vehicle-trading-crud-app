@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import logo from "../images/logo.png";
 import hamburger from "../images/hamburger.png";
 import * as AiIcons from "react-icons/ai";
-import { SidebarData} from './SidebarData';
 import { IconContext} from "react-icons"
 
 
