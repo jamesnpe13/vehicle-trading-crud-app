@@ -1,42 +1,58 @@
 // libraries
 import "./App.scss";
-import { useEffect, useState } from "react";
-
-// custom hooks
-import {} from "./hooks/vroom";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 // components
+import Navbar from "./components/Navbar";
 
 // page router
 import PageRouter from "./Router";
-import Card from "./components/ListCard";
+
+export const SignedInContext = React.createContext();
 
 export default function App() {
-    const [listingsData, setListingsData] = useState([]);
+	const navigate = useNavigate();
+	const [signedIn, setSignedIn] = useState(false);
+	const [staySignedIn, setStaySignedIn] = useState(true);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+	useEffect(() => {
+		checkActiveUser();
+		console.log("USER SIGNED IN: " + signedIn);
+	}, [signedIn]);
 
-    const fetchData = async () => {
-        const response = await fetch("http://localhost:5000/listings", {
-            method: "GET",
-        }).catch((err) => {
-            // console.log("ERR: " + err);
-        });
-        const data = await response.json();
-        setListingsData(data);
-        console.log(response);
-    };
+	function checkActiveUser() {
+		// check localStorage
+		const userIsActive = window.localStorage.getItem("active_user") ? true : false;
 
-    const listings = listingsData.map((item) => {
-        return <p key={item._id}>{item.title}</p>;
-    });
+		// if userIsActive
+		if (userIsActive) {
+			setSignedIn(true);
+			redirectToHome();
+		} else {
+			setSignedIn(false);
+		}
+	}
 
-    return (
-        <div className="App">
-            <div>{listingsData.length > 0 ? listings : "loading data"}</div>
-            <PageRouter />
-        </div>
-    );
+	function redirectToHome() {
+		console.log("redirecting to home");
+		navigate("/listings");
+	}
+
+	// signout on window close
+	window.addEventListener("beforeunload", () => {
+		if (!staySignedIn) {
+			setSignedIn(false);
+			window.localStorage.removeItem("active_user");
+		}
+	});
+
+	return (
+		<div className="App">
+			<SignedInContext.Provider value={[signedIn, setSignedIn]}>
+				<Navbar />
+				<PageRouter />
+			</SignedInContext.Provider>
+		</div>
+	);
 }
