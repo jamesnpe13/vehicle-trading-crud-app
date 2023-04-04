@@ -30,10 +30,7 @@ const Navbar = () => {
         }
      }, [path]);
 
-    //  const toggleNavItems = () => {
-    //     setShowNav(showNav ? false : true);
-    //     console.log(showNav);
-    //     };
+
 
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => setSidebar(!sidebar)
@@ -42,10 +39,18 @@ const Navbar = () => {
         <div className="navbar">
             <img className="logo" src={logo} alt="logo"></img>
              <div className="links-desktop">
-             <p>My Listings</p>
-            <p>Account</p>
-            <p>Sign Out</p>
-            <p>Customer Support</p>
+                <Link to={'/mylistings'}>
+                   <p>My Listings</p>
+                </Link>
+                <Link to={'/account'}>
+                <p>Account</p>
+                </Link>
+                <Link to={'/signout'}>
+                <p>Sign Out</p>
+                </Link>
+                <Link to={'/customer'}>
+                <p className="last">Customer Support</p>
+                </Link>           
             </div>
             {/* <p className="location-text disabled">{currentPage}</p> */}
             <IconContext.Provider value={{ color:'#f3f5f9'}}>
@@ -57,7 +62,7 @@ const Navbar = () => {
                             <AiIcons.AiOutlineClose />
                         </Link>
                     </li>
-                   
+        
                             <li className={'nav-text-b'}>
                                 <Link to={'/listings'}>
                                     Home
