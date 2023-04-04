@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
 import "./Signin.scss";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react"
+import { SignedInContext } from "../App";
 
 export default function Signin() {
+	const [signedIn, setSignedIn] = useContext(SignedInContext);
 	const [userInput, setUserInput] = useState({});
-	const navigate = useNavigate();
 
 	// check if user signed in
 	useEffect(() => {
@@ -13,10 +13,14 @@ export default function Signin() {
 
 	function checkActiveUser() {
 		// check localStorage
-		const userIsActive = window.localStorage.getItem("activeUserId") ? true : false;
+		const userIsActive = window.localStorage.getItem("active_user") ? true : false;
 
-		// if userIsActive = true, redirect to homepage
-		userIsActive && redirectToHome();
+		// if userIsActive
+		if (userIsActive) {
+			setSignedIn(true);
+		} else {
+			setSignedIn(false);
+		}
 	}
 
 	// sign in and authenticate
@@ -47,7 +51,7 @@ export default function Signin() {
 		if (userInput.password === data.password) {
 			console.log("Access granted");
 			saveUserData(data);
-			redirectToHome();
+			setSignedIn(true);
 			return;
 		} else {
 			console.log("Password incorrect");
@@ -58,18 +62,16 @@ export default function Signin() {
 	function saveUserData(data) {
 		const { _id, username, display_name } = data;
 
-		// save to local storage
+		const userData = {
+			_id: _id,
+			username: username,
+			display_name: display_name,
+		};
 
-		window.localStorage.setItem("activeUserId", _id);
-		window.localStorage.setItem("activeUserUsername", username);
-		window.localStorage.setItem("activeUserDisplayName", display_name);
+		// save to local storage
+		window.localStorage.setItem("active_user", JSON.stringify(userData));
 
 		// save to global state
-	}
-
-	function redirectToHome() {
-		console.log("redirecting to home");
-		navigate("/listings");
 	}
 
 	return (
