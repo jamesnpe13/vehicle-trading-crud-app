@@ -1,6 +1,5 @@
 @import "../App.scss";
 
-
 .navbar {
 	position: relative;
 	width: 100vw;
@@ -15,11 +14,25 @@
 
 	.logo {
 		height: 15px;
+		cursor: pointer;
 	}
 
 	.links-desktop {
 		display: flex;
+		align-items: center;
 		gap: 40px;
+
+		.display-name-container {
+			border: 1px solid white;
+			height: 40px;
+			aspect-ratio: 1 / 1;
+			border-radius: 100px;
+			display: grid;
+			place-content: center;
+
+			user-select: none;
+			cursor: pointer;
+		}
 	}
 
 	.hamburger {
@@ -101,7 +114,6 @@
 		}
 	}
 }
-
 
 // .navbar {
 // 	width: 100vw;
