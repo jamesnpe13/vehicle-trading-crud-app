@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import {} from "./hooks/vroom";
 
 // components
+import Navbar from "./components/Navbar";
 
 // page router
 import PageRouter from "./Router";
@@ -34,7 +35,9 @@ export default function App() {
     });
 
     return (
-        <div className="App">
+       
+        <div className="App"> 
+        <Navbar />
             <div>{listingsData.length > 0 ? listings : "loading data"}</div>
             <PageRouter />
         </div>
