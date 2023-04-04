@@ -12,6 +12,10 @@ body {
 	font-size: 1em;
 	width: 100vw;
 	overflow-x: hidden;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 a {
