@@ -14,6 +14,7 @@ export const SignedInContext = React.createContext();
 export default function App() {
 	const navigate = useNavigate();
 	const [signedIn, setSignedIn] = useState(false);
+	const [staySignedIn, setStaySignedIn] = useState(true);
 
 	useEffect(() => {
 		checkActiveUser();
@@ -37,6 +38,14 @@ export default function App() {
 		console.log("redirecting to home");
 		navigate("/listings");
 	}
+
+	// signout on window close
+	window.addEventListener("beforeunload", () => {
+		if (!staySignedIn) {
+			setSignedIn(false);
+			window.localStorage.removeItem("active_user");
+		}
+	});
 
 	return (
 		<div className="App">
