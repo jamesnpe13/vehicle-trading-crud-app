@@ -93,7 +93,7 @@ const Navbar = () => {
 								<Link to={"/transaction"}>Transaction history</Link>
 							</li>
 							<li className={"nav-text"}>
-								<Link to={"/carddetails"}>Card details</Link>
+								<Link to={"/listings/:id/payment"}>Card details</Link>
 							</li>
 						</ul>
 						<ul className="links-group">
