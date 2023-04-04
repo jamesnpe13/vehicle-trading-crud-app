@@ -12,7 +12,6 @@ const Navbar = () => {
     const [currentPage, setCurrentPage] = useState("");
 
     useEffect(() => {
-        console.log(path);
         if (path === "/") {
            setCurrentPage("Signin");
         }

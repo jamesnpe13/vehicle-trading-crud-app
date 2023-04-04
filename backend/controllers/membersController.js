@@ -24,12 +24,9 @@ exports.getMemberById = async (req, res) => {
 // get member by username - sign in authentication
 exports.getMemberByUsername = async (req, res) => {
 	try {
-		const result = await Member.find({ username: req.params.username });
-		if (result.length > 0) {
-			res.json(result[0]);
-		} else {
-			res.send("no match found");
-		}
+		const result = await Member.findOne({ username: req.params.username });
+
+		res.json(result);
 	} catch (error) {
 		res.send(error);
 	}
