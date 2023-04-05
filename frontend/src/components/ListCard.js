@@ -29,7 +29,7 @@ const Card = ({ itemData }) => {
 				<h2 className="list-title">{itemData.title}</h2>
 				<div className="specs">
 					<div className="main-specs prop-panel">
-						<p className="price">$10,000</p>
+						<p className="price">{itemData.price}</p>
 						<div className="item-property">
 							<img src={personimg}></img>
 							<p>{itemData.owner_id.display_name}</p>
