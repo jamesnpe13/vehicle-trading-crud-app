@@ -24,6 +24,8 @@ a {
 .App {
 	width: 100vw;
 	height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr;
 	overflow: hidden;
 }
 
@@ -32,6 +34,7 @@ a {
 	width: 100%;
 	display: grid;
 	grid-template-columns: auto 1fr;
+	overflow: hidden;
 
 	.side-bar {
 		background-color: #2d3549;
@@ -40,6 +43,7 @@ a {
 	}
 
 	.content-container {
+		height: 100%;
 		padding: 20px;
 		padding-inline: 5vw;
 		overflow-x: hidden;
