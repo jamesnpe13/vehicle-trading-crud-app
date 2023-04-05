@@ -1,5 +1,5 @@
 import "./Navbar.scss";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import logo from "../images/logo.png";
 import hamburger from "../images/hamburger.png";
@@ -7,8 +7,6 @@ import * as AiIcons from "react-icons/ai";
 import { SignedInContext } from "../App";
 
 const Navbar = () => {
-	const path = useLocation().pathname;
-	const [currentPage, setCurrentPage] = useState("");
 	const [sidebar, setSidebar] = useState(false);
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
 	const navigate = useNavigate();
@@ -44,6 +42,9 @@ const Navbar = () => {
 					</Link>
 					<Link to={"/account"}>
 						<p>My Listings</p>
+					</Link>
+					<Link to={"/mylistings/create"}>
+						<p>Create Listing</p>
 					</Link>
 					<Link to={"/"} onClick={handleSignOut}>
 						<p>Sign out</p>

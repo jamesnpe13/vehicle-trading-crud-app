@@ -7,10 +7,9 @@
 }
 
 body {
-	font-family: "Roboto", sans-serif;
+	font-family: "poppins", sans-serif;
 	color: rgb(51, 51, 51);
 	font-size: 1em;
-	width: 100vw;
 	overflow-x: hidden;
 
 	&::-webkit-scrollbar {
@@ -21,4 +20,37 @@ body {
 a {
 	text-decoration: none;
 	color: inherit;
+}
+.App {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.page {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-columns: auto 1fr;
+
+	.side-bar {
+		background-color: #2d3549;
+		width: 400px;
+		height: 100%;
+	}
+
+	.content-container {
+		padding: 20px;
+		padding-inline: 5vw;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+
+	@media screen and (width < 1200px) {
+		grid-template-columns: 1fr;
+
+		.side-bar {
+			display: none;
+		}
+	}
 }
