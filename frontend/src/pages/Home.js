@@ -3,20 +3,24 @@ import Card from "../components/ListCard";
 import { useEffect, useState } from "react";
 export default function Home() {
 	const [listingsData, setListingsData] = useState([]);
+
 	async function fetchData() {
 		const response = await fetch("http://localhost:5000/listings");
 		const data = await response.json();
 		setListingsData(data);
 	}
+
 	useEffect(() => {
 		fetchData();
 	}, []);
+
 	useEffect(() => {
 		console.log(listingsData);
 	}, [listingsData]);
+
 	return (
 		<div className="HomePage page">
-			<div className="side-bar mobile"></div>
+			<div className="side-bar"></div>
 
 			<div className="content-container">
 				<div className="cards-container">
@@ -28,4 +32,14 @@ export default function Home() {
 			</div>
 		</div>
 	);
+}
+
+{
+	/* <div className="chips-container">
+	<Chip chipsData={chipsData}>Make</Chip>
+	<Chip chipsData={chipsData}>Year</Chip>
+	<Chip chipsData={chipsData}>Body</Chip>
+	<Chip chipsData={chipsData}>Transmission</Chip>
+	<Chip chipsData={chipsData}>Color</Chip>
+</div>; */
 }

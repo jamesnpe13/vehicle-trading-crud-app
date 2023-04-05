@@ -40,6 +40,7 @@ a {
 		background-color: #2d3549;
 		width: 400px;
 		height: 100%;
+		padding: 20px;
 	}
 
 	.content-container {
@@ -48,6 +49,12 @@ a {
 		padding-inline: 5vw;
 		overflow-x: hidden;
 		overflow-y: scroll;
+	}
+
+	.chips-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
 	}
 
 	@media screen and (width < 1200px) {
