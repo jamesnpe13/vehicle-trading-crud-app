@@ -4,10 +4,10 @@ import React, { useContext } from "react";
 // pages
 import Notfound from "./pages/Notfound";
 import Home from "./pages/Home";
-import Listings from "./pages/Listings";
 import EditList from "./pages/EditList";
 import CreateList from "./pages/CreateListing";
 import Search from "./pages/Search";
+import ListingDetail from "./pages/ListingDetail";
 // import Details from "./pages/Details";
 import Purchase from "./pages/Purchase";
 import Payment from "./pages/Payment";
@@ -28,7 +28,7 @@ export default function PageRouter({ postsData, fetchAllPosts }) {
 			{signedIn && (
 				<React.Fragment>
 					<Route path="/listings" element={<Home />} />
-					<Route path="/listings/:id" element={<Home />} />
+					<Route path="/listings/:id" element={<ListingDetail />} />
 					<Route path="/myListings" element={<MyListing />} />
 					<Route path="/listings/:id/purchase" element={<Purchase />} />
 					<Route path="/mylistings/:id/edit" element={<EditList />} />

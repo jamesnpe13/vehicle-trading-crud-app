@@ -28,15 +28,9 @@ export default function App() {
 		// if userIsActive
 		if (userIsActive) {
 			setSignedIn(true);
-			redirectToHome();
 		} else {
 			setSignedIn(false);
 		}
-	}
-
-	function redirectToHome() {
-		console.log("redirecting to home");
-		navigate("/listings");
 	}
 
 	// signout on window close
