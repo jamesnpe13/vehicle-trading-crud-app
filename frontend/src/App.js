@@ -10,29 +10,11 @@ import Navbar from "./components/Navbar";
 import PageRouter from "./Router";
 
 export const SignedInContext = React.createContext();
-export const responsiveContext = React.createContext();
 
 export default function App() {
 	const navigate = useNavigate();
 	const [signedIn, setSignedIn] = useState(false);
 	const [staySignedIn, setStaySignedIn] = useState(true);
-
-	// screen responsiveness
-	const [screenMode, setScreenMode] = useState("");
-	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-	const breakpoint1 = 1200;
-	const breakpoint2 = 700;
-
-	window.addEventListener("resize", () => {
-		setScreenWidth(window.innerWidth);
-		handleScreenResize();
-	});
-
-	function handleScreenResize() {
-		if (screenWidth > breakpoint1) setScreenMode("desktop");
-		if (screenWidth <= breakpoint1 && screenWidth > breakpoint2) setScreenMode("tablet");
-		if (screenWidth <= breakpoint2) setScreenMode("mobile");
-	}
 
 	// user signed in check
 	useEffect(() => {
@@ -62,13 +44,10 @@ export default function App() {
 
 	return (
 		<div className="App">
-			{" "}
-			<responsiveContext.Provider value={screenMode}>
-				<SignedInContext.Provider value={[signedIn, setSignedIn]}>
-					<Navbar />
-					<PageRouter />
-				</SignedInContext.Provider>
-			</responsiveContext.Provider>
+			<SignedInContext.Provider value={[signedIn, setSignedIn]}>
+				<Navbar />
+				<PageRouter />
+			</SignedInContext.Provider>
 		</div>
 	);
 }
