@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import PageRouter from "./Router";
 
 export const SignedInContext = React.createContext();
+export const responsiveContext = React.createContext();
 
 export default function App() {
 	const navigate = useNavigate();
@@ -61,10 +62,13 @@ export default function App() {
 
 	return (
 		<div className="App">
-			<SignedInContext.Provider value={[signedIn, setSignedIn]}>
-				<Navbar />
-				<PageRouter />
-			</SignedInContext.Provider>
+			{" "}
+			<responsiveContext.Provider value={screenMode}>
+				<SignedInContext.Provider value={[signedIn, setSignedIn]}>
+					<Navbar />
+					<PageRouter />
+				</SignedInContext.Provider>
+			</responsiveContext.Provider>
 		</div>
 	);
 }
