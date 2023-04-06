@@ -1,15 +1,17 @@
 import "./Signin.scss";
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react";
 import { SignedInContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 export default function Signin() {
+	const navigate = useNavigate();
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
 	const [userInput, setUserInput] = useState({});
 
 	// check if user signed in
 	useEffect(() => {
 		checkActiveUser();
-	}, []);
+	}, [signedIn]);
 
 	function checkActiveUser() {
 		// check localStorage
@@ -18,6 +20,7 @@ export default function Signin() {
 		// if userIsActive
 		if (userIsActive) {
 			setSignedIn(true);
+			redirectToHome();
 		} else {
 			setSignedIn(false);
 		}
@@ -70,8 +73,11 @@ export default function Signin() {
 
 		// save to local storage
 		window.localStorage.setItem("active_user", JSON.stringify(userData));
+	}
 
-		// save to global state
+	function redirectToHome() {
+		console.log("redirecting to home");
+		navigate("/listings");
 	}
 
 	return (
