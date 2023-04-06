@@ -41,9 +41,26 @@ export default function App() {
 		}
 	});
 
+	const [screenMode, setScreenMode] = useState("");
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+	const breakpoint1 = 1200;
+	const breakpoint2 = 700;
+
+	window.addEventListener("resize", () => {
+		setScreenWidth(window.innerWidth);
+		handleScreenResize();
+	});
+
+	function handleScreenResize() {
+		if (screenWidth > breakpoint1) setScreenMode("desktop");
+		if (screenWidth <= breakpoint1 && screenWidth > breakpoint2) setScreenMode("tablet");
+		if (screenWidth <= breakpoint2) setScreenMode("mobile");
+	}
+
 	return (
 		<div className="App">
 			<SignedInContext.Provider value={[signedIn, setSignedIn]}>
+				
 				<Navbar />
 				<PageRouter />
 			</SignedInContext.Provider>
