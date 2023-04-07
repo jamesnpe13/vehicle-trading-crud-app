@@ -1,4 +1,4 @@
-@import "../App.scss";
+@import "../base/base.scss";
 
 .navbar {
 	position: relative;
@@ -104,7 +104,7 @@
 		}
 	}
 
-	@media screen and (width < 1200px) {
+	@media screen and (width < $breakpoint-1) {
 		.links-desktop {
 			display: none;
 		}

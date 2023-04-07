@@ -5,6 +5,8 @@ import fuelimg from "../images/fuel.svg";
 import odometerimg from "../images/odometer.svg";
 import personimg from "../images/person.svg";
 import transmissionimg from "../images/transmission.svg";
+import yearimg from "../images/year.svg";
+import colorimg from "../images/color.svg";
 import { useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
@@ -20,6 +22,7 @@ const Card = ({ itemData }) => {
 				<SplideSlide>
 					<img src="https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image.png" alt="img1"></img>
 				</SplideSlide>
+
 				<SplideSlide>
 					<img src="https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image.png" alt="img2"></img>
 				</SplideSlide>
@@ -29,7 +32,13 @@ const Card = ({ itemData }) => {
 				<h2 className="list-title">{itemData.title}</h2>
 				<div className="specs">
 					<div className="main-specs prop-panel">
-						<p className="price">{itemData.price}</p>
+						<p className="price">{`$${itemData.price}`}</p>
+						<div className="item-property">
+							<img src={carimg}></img>
+							<p>
+								{itemData.vehicle.year} {itemData.vehicle.make} {itemData.vehicle.model}
+							</p>
+						</div>
 						<div className="item-property">
 							<img src={personimg}></img>
 							<p>{itemData.owner_id.display_name}</p>
@@ -38,26 +47,24 @@ const Card = ({ itemData }) => {
 							<img src={locationimg}></img>
 							<p>{itemData.location}</p>
 						</div>
+						<p className="description">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur nobis dolores sunt, et deleniti repellendus ullam sit rem voluptatibus neque maiores, quidem quibusdam suscipit ad voluptatem laborum cum cupiditate quam
+							obcaecati, explicabo illum ipsa fugiat sint corrupti. Laboriosam voluptate debitis earum veniam. Harum ducimus, id accusamus repudiandae nesciunt eveniet quam.
+						</p>
 					</div>
-					{/* <hr /> */}
+
 					<div className="detail-specs prop-panel">
 						<div className="item-property">
-							<img src={carimg}></img>
-							<p>
-								{itemData.vehicle.make} {itemData.vehicle.model}
-							</p>
+							<img src={odometerimg}></img>
+							<p>{itemData.vehicle.mileage} km</p>
 						</div>
 						<div className="item-property">
 							<img src={personimg}></img>
-							<p>{itemData.vehicle.year}</p>
-						</div>
-						<div className="item-property">
-							<img src={odometerimg}></img>
-							<p>{itemData.vehicle.mileage}</p>
+							<p>{"[SEATS]"}</p>
 						</div>
 						<div className="item-property">
 							<img src={fuelimg}></img>
-							<p>{itemData.vehicle.color}</p>
+							<p>{"[FUEL TYPE]"}</p>
 						</div>
 						<div className="item-property">
 							<img src={transmissionimg}></img>

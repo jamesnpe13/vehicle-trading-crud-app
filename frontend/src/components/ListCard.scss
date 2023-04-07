@@ -1,16 +1,19 @@
 @use "../base/colours" as cols;
+@import "../base/base.scss";
 
 .card {
 	width: 100%;
-	max-width: 750px;
 	display: flex;
 	gap: 20px;
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 15px 5px cols.$disabled-button;
+	color: $color-primary-v4;
+	font-size: $font-size-body-1;
 
 	.splide {
 		width: 300px;
+		box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.169);
 
 		img {
 			max-width: 300px;
@@ -25,11 +28,10 @@
 		width: 100%;
 
 		.list-title {
-			color: cols.$nav-blue;
+			color: $color-primary-v3
 		}
 
 		.specs {
-			color: cols.$grey-text;
 			display: flex;
 			justify-content: space-between;
 			gap: 20px;
@@ -59,10 +61,20 @@
 			.main-specs {
 				justify-content: flex-start;
 				width: 100%;
+				gap: 15px;
+
 				.price {
-					color: cols.$primary-button;
+					color: $color-primary-v1;
 					font-size: 1.5em;
-					margin-bottom: 10px;
+					// margin-bottom: 10px;
+				}
+
+				.description {
+					overflow: hidden;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 3;
+					white-space: pre-wrap;
 				}
 			}
 
