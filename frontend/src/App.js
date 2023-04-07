@@ -1,6 +1,5 @@
-// libraries
 import "./App.scss";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // components
@@ -12,7 +11,6 @@ import PageRouter from "./Router";
 export const SignedInContext = React.createContext();
 
 export default function App() {
-	const navigate = useNavigate();
 	const [signedIn, setSignedIn] = useState(false);
 	const [staySignedIn, setStaySignedIn] = useState(true);
 

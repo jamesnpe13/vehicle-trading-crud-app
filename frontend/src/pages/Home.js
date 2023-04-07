@@ -20,10 +20,10 @@ export default function Home() {
 
 	return (
 		<div className="HomePage page">
-			<div className="side-bar"></div>
+			<div className="sidebar"></div>
 
-			<div className="content-container">
-				<div className="cards-container">
+			<div className="main">
+				<div className="content-container">
 					{listingsData &&
 						listingsData.map((item) => {
 							return <Card key={item._id} itemData={item} />;
