@@ -14,7 +14,8 @@ import "@splidejs/react-splide/css";
 const Card = ({ itemData }) => {
 	return (
 		<div className="card">
-			<Splide
+			<div className="carousel"></div>
+			{/* <Splide
 				className="splide"
 				options={{
 					rewind: true,
@@ -26,7 +27,7 @@ const Card = ({ itemData }) => {
 				<SplideSlide>
 					<img src="https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image.png" alt="img2"></img>
 				</SplideSlide>
-			</Splide>
+			</Splide> */}
 
 			<div className="card-info">
 				<h2 className="list-title">{itemData.title}</h2>
