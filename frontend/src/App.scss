@@ -85,6 +85,7 @@ body {
 			.content-container {
 				max-width: 1000px;
 				width: 100%;
+				height: max-content;
 
 				.page-title {
 					font-size: $font-size-header-3;
