@@ -81,10 +81,16 @@ export default function Signin() {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input type="text" placeholder="Username" required={true} onChange={handleChangeUsername} />
-			<input type="text" placeholder="Password" required={true} onChange={handleChangePassword} />
-			<button type="submit">Sign in</button>
-		</form>
+		<div className="Signin page">
+			<div className="main">
+				<div className="content-container">
+					<form onSubmit={handleSubmit}>
+						<input type="text" placeholder="Username" required={true} onChange={handleChangeUsername} />
+						<input type="text" placeholder="Password" required={true} onChange={handleChangePassword} />
+						<button type="submit">Sign in</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	);
 }

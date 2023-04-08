@@ -23,54 +23,68 @@ body {
 }
 
 .App {
-	width: 100vw;
 	height: 100vh;
-	display: grid;
-	grid-template-rows: auto;
 	overflow: hidden;
+	display: flex;
+	flex-direction: column;
 
 	.navbar {
-		//
+		flex-shrink: 0;
 	}
 
 	.page {
-		display: grid;
-		grid-template-columns: 300px 1fr;
+		flex-grow: 1;
+		display: flex;
 		height: 100%;
 		overflow: hidden;
 
 		.sidebar {
 			background-color: $color-primary-v4;
-			padding: $padding-panel;
+			width: 300px;
+			height: 100%;
+			flex-shrink: 0;
+			padding: $padding-panel-1;
 		}
 
 		.main {
-			background-color: $color-white-v1;
-			padding: $padding-panel;
-			display: grid;
-			place-items: center;
-			overflow: scroll;
-			height: auto;
+			width: 100%;
+			flex-grow: 1;
+			overflow-y: scroll;
+			padding: $padding-panel-1;
 
 			.content-container {
-				max-width: 1000px;
 			}
 		}
 	}
 
 	@media screen and (width < $breakpoint-1) {
 		.page {
-			grid-template-columns: 1fr;
-			grid-template-rows: 200px 1fr;
+			flex-direction: column;
 			overflow: scroll;
-			height: auto;
 
 			.sidebar {
-				//
+				width: 100%;
+				height: auto;
+				min-height: 80px;
 			}
 
 			.main {
-				overflow:visible;
+				overflow-y: visible;
+
+				.content-container {
+				}
+			}
+		}
+	}
+
+	@media screen and (width < $breakpoint-2) {
+		.page {
+			.sidebar {
+				padding: $padding-panel-2;
+			}
+
+			.main {
+				padding: $padding-panel-2;
 				.content-container {
 					//
 				}
@@ -78,110 +92,3 @@ body {
 		}
 	}
 }
-
-// .page {
-// 	height: 100%;
-// 	width: 100%;
-// 	display: grid;
-// 	grid-template-columns: auto 1fr;
-// 	overflow: hidden;
-
-// 	.side-bar {
-// 		background-color: #2d3549;
-// 		width: 400px;
-// 		height: 100%;
-// 		padding: 20px;
-// 	}
-
-// 	.content-container {
-// 		height: 100%;
-// 		padding: 20px;
-// 		padding-inline: 5vw;
-// 		overflow-x: hidden;
-// 		overflow-y: scroll;
-// 	}
-
-// 	.chips-container {
-// 		display: flex;
-// 		flex-wrap: wrap;
-// 		gap: 10px;
-// 	}
-
-// 	@media screen and (width < 1200px) {
-// 		grid-template-columns: 1fr;
-
-// 		.side-bar {
-// 			display: none;
-// 		}
-// 	}
-// }
-/*
-
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-body {
-	font-family: "poppins", sans-serif;
-	color: rgb(51, 51, 51);
-	font-size: 1em;
-	overflow-x: hidden;
-
-	&::-webkit-scrollbar {
-		display: none;
-	}
-}
-
-a {
-	text-decoration: none;
-	color: inherit;
-}
-.App {
-	width: 100vw;
-	height: 100vh;
-	display: grid;
-	grid-template-rows: auto 1fr;
-	overflow: hidden;
-}
-
-.page {
-	height: 100%;
-	width: 100%;
-	display: grid;
-	grid-template-columns: auto 1fr;
-	overflow: hidden;
-
-	.side-bar {
-		background-color: #2d3549;
-		width: 400px;
-		height: 100%;
-		padding: 20px;
-	}
-
-	.content-container {
-		height: 100%;
-		padding: 20px;
-		padding-inline: 5vw;
-		overflow-x: hidden;
-		overflow-y: scroll;
-	}
-
-	.chips-container {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
-	}
-
-	@media screen and (width < 1200px) {
-		grid-template-columns: 1fr;
-
-		.side-bar {
-			display: none;
-		}
-	}
-}
-
-*/
