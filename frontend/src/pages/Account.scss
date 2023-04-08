@@ -1,0 +1,27 @@
+.Account {
+	.main {
+		.content-container {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			.account-details {
+				.grid-wrapper {
+					width: min(400px, 100%);
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+				}
+
+				h3 {
+					grid-column: 1 / -1;
+				}
+
+				.key {
+					font-weight: 600;
+				}
+			}
+			section.create-listing {
+				background-color: red;
+			}
+		}
+	}
+}

@@ -1,6 +1,7 @@
 @import "../base/base.scss";
 
 .navbar {
+	z-index: 10000;
 	position: relative;
 	width: 100vw;
 	height: 60px;

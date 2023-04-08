@@ -58,11 +58,24 @@ body {
 			.content-container {
 				max-width: 1000px;
 				width: 100%;
-				
+
 				.page-title {
 					font-size: $font-size-header-3;
 					color: $color-primary-v2;
 					font-weight: 600;
+					margin-bottom: $padding-panel-2;
+				}
+				section {
+					background-color: $color-white-v1;
+					border-radius: 5px;
+					padding: $padding-panel-1;
+
+					.section-title {
+						font-size: $font-size-body-1;
+						margin-bottom: $padding-panel-2;
+						color: $color-primary-v3;
+						font-weight: 600;
+					}
 				}
 			}
 		}
