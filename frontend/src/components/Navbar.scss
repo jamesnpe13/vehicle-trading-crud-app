@@ -12,6 +12,10 @@
 	padding-inline: 20px;
 	font-size: 1em;
 
+	hr {
+		opacity: 0.3;
+	}
+
 	.logo {
 		height: 15px;
 		cursor: pointer;
@@ -99,7 +103,7 @@
 				}
 			}
 		}
-		.signout {
+		.links-group:last-of-type {
 			margin-top: auto;
 		}
 	}

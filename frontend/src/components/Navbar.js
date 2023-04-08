@@ -34,20 +34,12 @@ const Navbar = () => {
 
 			{signedIn && (
 				<div className="links-desktop">
-					<Link to={"/listings"}>
-						<p>Browse</p>
-					</Link>
-					<Link to={"/account"}>
-						<p>Bookmarks</p>
-					</Link>
-					<Link to={"/account"}>
-						<p>My Listings</p>
-					</Link>
-					<Link to={"/mylistings/create"}>
-						<p>Create Listing</p>
-					</Link>
+					<Link to={"/listings"}>Browse</Link>
+					<Link to={"/mylistings/create"}>Create Listing</Link>
+					<Link to={"/transaction"}>My listings</Link>
+					<Link to={"/carddetails"}>Bookmarks</Link>
 					<Link to={"/"} onClick={handleSignOut}>
-						<p>Sign out</p>
+						Sign out
 					</Link>
 
 					<div className="display-name-container">
@@ -67,43 +59,27 @@ const Navbar = () => {
 
 						<ul className="links-group">
 							<li className={"nav-text-b"}>
-								<Link to={"/listings"}>Home</Link>
+								<Link to={"/listings"}>Browse</Link>
+							</li>
+						</ul>
+						<hr />
+						<ul className="links-group">
+							<li className={"nav-text-b"}>
+								<Link to={"/mylistings/create"}>Create Listing</Link>
+							</li>
+							<li className={"nav-text-b"}>
+								<Link to={"/transaction"}>My listings</Link>
+							</li>
+							<li className={"nav-text-b"}>
+								<Link to={"/carddetails"}>Bookmarks</Link>
 							</li>
 						</ul>
 
 						<ul className="links-group">
 							<li className={"nav-text-b"}>
-								<Link to={"/mylistings"}>My Listings</Link>
+								<Link to={"/accountsetting"}>Account</Link>
 							</li>
-							<li className={"nav-text"}>
-								<Link to={"/listings"}>View all listings</Link>
-							</li>
-							<li className={"nav-text"}>
-								<Link to={"/listings/create"}>Create listing</Link>
-							</li>
-						</ul>
-
-						<ul className="links-group">
-							<li className={"nav-text-b"}>
-								<Link to={"/account"}>Account</Link>
-							</li>
-							<li className={"nav-text"}>
-								<Link to={"/accountsetting"}>Account settings</Link>
-							</li>
-							<li className={"nav-text"}>
-								<Link to={"/transaction"}>Transaction history</Link>
-							</li>
-							<li className={"nav-text"}>
-								<Link to={"/carddetails"}>Card details</Link>
-							</li>
-						</ul>
-						<ul className="links-group">
-							<li className={"nav-text-b"}>
-								<Link to={"/customer"}>Customer service</Link>
-							</li>
-						</ul>
-						<ul className="links-group signout">
-							<li className={"nav-text-b"}>
+							<li className="nav-text-b">
 								<Link to={"/"} onClick={handleSignOut}>
 									Sign out
 								</Link>
