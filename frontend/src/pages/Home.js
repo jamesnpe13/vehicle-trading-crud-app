@@ -1,7 +1,9 @@
 import "./Home.scss";
 import Card from "../components/ListCard";
 import { useEffect, useState } from "react";
+import PageLocation from "../components/PageLocation";
 export default function Home() {
+	const pageTitle = "Browse listings";
 	const [listingsData, setListingsData] = useState([]);
 
 	async function fetchData() {
@@ -14,16 +16,13 @@ export default function Home() {
 		fetchData();
 	}, []);
 
-	useEffect(() => {
-		console.log(listingsData);
-	}, [listingsData]);
-
 	return (
 		<div className="HomePage page">
 			<div className="sidebar"></div>
 
 			<div className="main">
 				<div className="content-container">
+					<div className="page-title">{<PageLocation pageTitle={pageTitle} />}</div>
 					{listingsData &&
 						listingsData.map((item) => {
 							return <Card key={item._id} itemData={item} />;

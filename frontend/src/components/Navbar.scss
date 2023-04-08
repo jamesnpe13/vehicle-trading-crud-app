@@ -12,6 +12,18 @@
 	padding-inline: 20px;
 	font-size: 1em;
 
+	.display-name-container {
+		border: 1px solid white;
+		width: auto;
+		border-radius: 100px;
+		display: grid;
+		place-content: center;
+		font-size: $font-size-body-1;
+		padding: 5px 20px;
+		user-select: none;
+		cursor: pointer;
+	}
+
 	hr {
 		opacity: 0.3;
 	}
@@ -25,18 +37,6 @@
 		display: flex;
 		align-items: center;
 		gap: 40px;
-
-		.display-name-container {
-			border: 1px solid white;
-			height: 40px;
-			aspect-ratio: 1 / 1;
-			border-radius: 100px;
-			display: grid;
-			place-content: center;
-
-			user-select: none;
-			cursor: pointer;
-		}
 	}
 
 	.hamburger {

@@ -5,10 +5,12 @@ import React, { useContext } from "react";
 import Notfound from "./pages/Notfound";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
+import Account from "./pages/Account";
 
+// useContext
 import { SignedInContext } from "./App";
 
-export default function PageRouter({ postsData, fetchAllPosts }) {
+export default function PageRouter() {
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
 
 	return (
@@ -19,6 +21,7 @@ export default function PageRouter({ postsData, fetchAllPosts }) {
 			{signedIn && (
 				<React.Fragment>
 					<Route path="/listings" element={<Home />} />
+					<Route path="/account" element={<Account />} />
 				</React.Fragment>
 			)}
 		</Routes>

@@ -11,6 +11,38 @@ const Navbar = () => {
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
 	const navigate = useNavigate();
 
+	const navLinks = {
+		browse: () => {
+			return <Link to={"/listings"}>Browse</Link>;
+		},
+		createListing: () => {
+			return <Link to={"/account/listings/create"}>Create Listing</Link>;
+		},
+		myListings: () => {
+			return <Link to={"/account/listings"}>My listings</Link>;
+		},
+		bookmarks: () => {
+			return <Link to={"/account/bookmarks"}>Bookmarks</Link>;
+		},
+		account: () => {
+			return <Link to={"/account"}>Account</Link>;
+		},
+		signout: () => {
+			return (
+				<Link to={"/"} onClick={handleSignOut}>
+					Sign out
+				</Link>
+			);
+		},
+		activeUser: () => {
+			return (
+				<div className="display-name-container">
+					<p>{signedIn ? displayNameFull() : ""}</p>
+				</div>
+			);
+		},
+	};
+
 	const displayNameInitials = () => {
 		const activeUserDisplayName = JSON.parse(window.localStorage.getItem("active_user")).display_name;
 		const words = activeUserDisplayName.split(" ");
@@ -19,6 +51,12 @@ const Navbar = () => {
 		});
 		const firstLettersJoined = firstLetters.join("");
 		return firstLettersJoined;
+	};
+
+	const displayNameFull = () => {
+		const activeUserDisplayName = JSON.parse(window.localStorage.getItem("active_user")).display_name;
+
+		return activeUserDisplayName;
 	};
 
 	const showSidebar = () => setSidebar(!sidebar);
@@ -34,17 +72,11 @@ const Navbar = () => {
 
 			{signedIn && (
 				<div className="links-desktop">
-					<Link to={"/listings"}>Browse</Link>
-					<Link to={"/mylistings/create"}>Create Listing</Link>
-					<Link to={"/transaction"}>My listings</Link>
-					<Link to={"/carddetails"}>Bookmarks</Link>
-					<Link to={"/"} onClick={handleSignOut}>
-						Sign out
-					</Link>
-
-					<div className="display-name-container">
-						<p>{signedIn ? displayNameInitials() : ""}</p>
-					</div>
+					{navLinks.browse()}
+					{navLinks.createListing()}
+					{navLinks.account()}
+					{navLinks.signout()}
+					{navLinks.activeUser()}
 				</div>
 			)}
 
@@ -56,34 +88,15 @@ const Navbar = () => {
 						<div className="close-button">
 							<AiIcons.AiOutlineClose />
 						</div>
-
+						{navLinks.activeUser()}
 						<ul className="links-group">
-							<li className={"nav-text-b"}>
-								<Link to={"/listings"}>Browse</Link>
-							</li>
-						</ul>
-						<hr />
-						<ul className="links-group">
-							<li className={"nav-text-b"}>
-								<Link to={"/mylistings/create"}>Create Listing</Link>
-							</li>
-							<li className={"nav-text-b"}>
-								<Link to={"/transaction"}>My listings</Link>
-							</li>
-							<li className={"nav-text-b"}>
-								<Link to={"/carddetails"}>Bookmarks</Link>
-							</li>
+							<li className={"nav-text-b"}>{navLinks.browse()}</li>
+							<li className={"nav-text-b"}>{navLinks.createListing()}</li>
 						</ul>
 
 						<ul className="links-group">
-							<li className={"nav-text-b"}>
-								<Link to={"/accountsetting"}>Account</Link>
-							</li>
-							<li className="nav-text-b">
-								<Link to={"/"} onClick={handleSignOut}>
-									Sign out
-								</Link>
-							</li>
+							<li className={"nav-text-b"}>{navLinks.account()}</li>
+							<li className="nav-text-b">{navLinks.signout()}</li>
 						</ul>
 					</nav>
 				</React.Fragment>
