@@ -22,6 +22,32 @@ body {
 	}
 }
 
+.button {
+	background-color: $color-primary-v1;
+	color: $color-white-v1;
+	padding: 15px 10px;
+	border-radius: 8px;
+	border: none;
+	font-size: $font-size-body-1;
+	width: 100%;
+
+	&.primary {
+		background-color: $color-primary-v1;
+	}
+
+	&.secondary {
+		background-color: $color-secondary-v1;
+	}
+
+	&.tertiary {
+		background-color: $color-tertiary-v1;
+	}
+
+	&.grey {
+		background-color: $color-grey-v2;
+	}
+}
+
 .App {
 	height: 100vh;
 	overflow: hidden;
@@ -37,6 +63,7 @@ body {
 		display: flex;
 		height: 100%;
 		overflow: hidden;
+		background-color: $color-white-v1;
 
 		.sidebar {
 			background-color: $color-primary-v4;
@@ -69,6 +96,7 @@ body {
 					background-color: $color-white-v1;
 					border-radius: 5px;
 					padding: $padding-panel-1;
+					box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.281);
 
 					.section-title {
 						font-size: $font-size-body-1;

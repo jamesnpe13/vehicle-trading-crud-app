@@ -1,3 +1,5 @@
+@import "../base/base.scss";
+
 .Account {
 	.main {
 		.content-container {
@@ -9,6 +11,18 @@
 					width: min(400px, 100%);
 					display: grid;
 					grid-template-columns: 1fr 1fr;
+
+					.rating {
+						display: flex;
+						align-items: center;
+						gap: 5px;
+
+						img {
+							height: 18px;
+							width: 18px;
+							object-fit: contain;
+						}
+					}
 				}
 
 				h3 {
@@ -19,8 +33,41 @@
 					font-weight: 600;
 				}
 			}
-			section.create-listing {
-				background-color: red;
+
+			.my-listings, .bookmarks {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				
+			}
+
+			.listings-container {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 30px;
+
+				.listing-item {
+					// background-color: white;
+					padding-block: $padding-panel-2;
+					display: flex;
+					justify-content: space-between;
+					border-block: 1px solid rgb(223, 223, 223);
+
+					h3 {
+						font-size: $font-size-body-1;
+					}
+
+					p {
+						font-size: $font-size-body-2;
+
+						
+					}
+					
+
+					// &:nth-of-type(even) {
+					// 	background-color: $color-grey-v1;
+					// }
+				}
 			}
 		}
 	}
