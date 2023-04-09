@@ -25,11 +25,12 @@ body {
 .button {
 	background-color: $color-primary-v1;
 	color: $color-white-v1;
-	padding: 15px 10px;
+	padding: 10px 20px;
 	border-radius: 8px;
 	border: none;
 	font-size: $font-size-body-1;
-	width: 100%;
+	width: max-content;
+	font-weight: $font-weight-normal;
 
 	&.primary {
 		background-color: $color-primary-v1;
@@ -45,6 +46,18 @@ body {
 
 	&.grey {
 		background-color: $color-grey-v2;
+	}
+
+	&.v2 {
+		padding: 10px 20px;
+	}
+
+	&.v3 {
+		padding: 5px 8px;
+	}
+
+	&.span {
+		width: 100%;
 	}
 }
 
@@ -87,23 +100,27 @@ body {
 				width: 100%;
 				height: max-content;
 
+				display: flex;
+				flex-direction: column;
+				gap: $gap-section-3;
+
 				.page-title {
 					font-size: $font-size-header-3;
-					color: $color-primary-v2;
-					font-weight: 600;
+					color: $color-primary-v1;
+					font-weight: $font-weight-black;
 					margin-bottom: $padding-panel-2;
 				}
-				section {
-					background-color: $color-white-v1;
-					border-radius: 5px;
-					padding: $padding-panel-1;
-					box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.281);
-
-					.section-title {
-						font-size: $font-size-body-1;
-						margin-bottom: $padding-panel-2;
-						color: $color-primary-v3;
-						font-weight: 600;
+				
+				.section-container {
+					section {
+						.section-title {
+							font-size: $font-size-body-1;
+							padding-bottom: $padding-panel-2;
+							margin-bottom: $padding-panel-2;
+							color: $color-primary-v1;
+							font-weight: $font-weight-bold;
+							border-bottom: 1px solid $color-grey-v2;
+						}
 					}
 				}
 			}

@@ -23,10 +23,12 @@ export default function Home() {
 			<div className="main">
 				<div className="content-container">
 					<div className="page-title">{<PageLocation pageTitle={pageTitle} />}</div>
-					{listingsData &&
-						listingsData.map((item) => {
-							return <Card key={item._id} itemData={item} />;
-						})}
+					<div className="section-container">
+						{listingsData &&
+							listingsData.map((item) => {
+								return <Card key={item._id} itemData={item} />;
+							})}
+					</div>
 				</div>
 			</div>
 		</div>

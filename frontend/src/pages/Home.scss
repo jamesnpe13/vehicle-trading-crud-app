@@ -2,13 +2,15 @@
 
 .HomePage {
 	.side-bar {
-		// 
+		//
 	}
 	.main {
 		.content-container {
-			display: flex;
-			flex-direction: column;
-			gap: 20px;
+			.section-container {
+				display: flex;
+				flex-direction: column;
+				gap: $gap-section-2;
+			}
 		}
 	}
 }
