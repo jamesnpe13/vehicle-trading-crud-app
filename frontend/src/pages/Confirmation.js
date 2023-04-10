@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function Confirmation (){
     const history = useNavigate()
-    return (
+    return ( 
+    <div className="confirm-background">
         <>
+       
    
     <div className="confirm-box">
 
@@ -78,7 +80,8 @@ Total
    
    
     </div>   
-    </>
+   
+    </> </div>
     )
 
     
