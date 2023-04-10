@@ -3,6 +3,7 @@ import Card from "../components/ListCard";
 import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
 import PageLocation from "../components/PageLocation";
+import Search from "../components/Search";
 export default function Home() {
 	const pageTitle = "Browse listings";
 	const [listingsData, setListingsData] = useState(undefined);
@@ -19,7 +20,9 @@ export default function Home() {
 
 	return (
 		<div className="HomePage page">
-			<div className="sidebar"></div>
+			<div className="sidebar">
+				<Search />
+			</div>
 
 			<div className="main">
 				<div className="content-container">
