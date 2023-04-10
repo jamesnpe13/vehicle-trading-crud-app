@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"Confirmation.css"}
+{"version":3,"sources":["../frontend/src/pages/Confirmation.scss"],"names":[],"mappings":"AAAA,aACI,WAAA,CACA,YAAA,CACA,WAAA,CACA,YAAA,CACA,wBAAA,CACA,wBAAA,CACA,kBAAA,CAGF,gBACE,mBAAA,CAGF,iBACE,YAAA,CACA,6BAAA,CACA,kBAAA,CACA,aAAA,CAGF,aACE,eAAA,CAGA,wBAAA,CAEA,YAAA,CACA,iBAAA,CACA,aAAA,CACA,iBAAA,CACA,cAAA,CAGF,qCACE,iBAAA,CACA,aAAA,CACA,eAAA,CACA,kBAAA,CAGF,iBACE,cAAA,CAGF,oBACE,cAAA","file":"Confirmation.css"}

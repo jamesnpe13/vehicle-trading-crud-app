@@ -1,0 +1,48 @@
+.confirm-box{
+    width: 384px;
+    height: 730px;
+    margin: 20px;
+    padding: 25px;
+    background-color: #F3F5F9;
+    border: 1px solid #F3F5F9;
+    border-radius: 10px
+  };
+
+  .confirm-photos{
+    margin-bottom: 100px;
+  }
+
+  .confirm-details{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color:#323776;
+  }
+
+  .receipt-btn {
+    margin-top: 40px;
+    // margin-left: 20px;
+    // margin-right: 20px;
+    border: 2px solid #3d38f1;
+    // background: #74ac6c;
+    padding: 12px;
+    text-align: center;
+    color: #3d38f1;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .confirm-heading, .confirm-subheading{
+    text-align: center;
+    color:#323776;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .confirm-heading{
+    font-size: 25px;
+  }
+
+  .confirm-subheading{
+    font-size: 20px;
+  }

@@ -24,4 +24,9 @@ router
 	.get(listingsController.getListingComments)
 	.put(listingsController.createNewComment);
 
+router
+	.route("/listings/:id")
+
+	.get(listingsController.getListingById)
+
 module.exports = router;

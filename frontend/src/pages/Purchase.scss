@@ -1,0 +1,132 @@
+.title-purchase{
+    text-align: center;
+    // margin-top: 30px;
+    margin-bottom: 50px;
+    font-weight: 500;
+    color: #323776;
+    font-size: 30px;
+}
+
+.back-button{
+    font-size: xx-large;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  .radio-input {
+    visibility: hidden;
+  }
+
+  .select-method {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+ 
+  
+  .radio-label {
+    color: #323776;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 7px;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+  }
+  
+  .radio-input {
+    margin: 0;
+    visibility: hidden;
+    
+   
+  } 
+  
+  .radio-input:checked + span {
+    border: 2px solid #9e9cf5;
+  }
+  
+    .radio-input:checked + span:after {
+    opacity: 1;
+  }
+
+  
+  .custom-radio {
+    left: -8px;
+    top: 6px;
+    cursor: pointer;
+    width: 17px;
+    height: 17px;
+    border: 2px solid #9a9a9a;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+  }
+  
+  /* for inner filled circle */
+  .custom-radio::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #9e9cf5;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s;}
+
+    .title-select{
+        font-size: 20px;
+        color: #323776;
+        padding: 0px 40px 30px 40px;
+        font-weight: 500;
+
+    }
+
+    .select-1{
+        display: flex;
+        flex-direction: row-reverse;
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 15px;
+        
+        border: 1px solid #9e9cf5;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 40px;
+        background-color: #F3F5F9;
+        justify-content: space-between;
+    }
+
+    .icon-box{
+        border: 1px solid #F3F5F9 ;
+        border-radius: 10px;
+        background-color: #9d9bf46e;
+        padding-left: 22px;
+        padding-right: 20px;
+        padding-bottom: 5px;
+        padding-top: 15px;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .method-explan{
+        color: #323776;
+        font-size: 12px;
+        margin-left: 30px;
+        margin-right: 20px;
+        margin-top: 10px;
+    }
+
+    .method-btn {
+        margin-top: 200px;
+        margin-left: 20px;
+        margin-right: 20px;
+        background:#3D38F1;
+        padding: 12px;
+        text-align: center;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }

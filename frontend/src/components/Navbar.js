@@ -3,7 +3,8 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import logo from "../images/logo.png";
 import hamburger from "../images/hamburger.png";
-import * as AiIcons from "react-icons/ai";
+// import * as AiIcons from "react-icons/ai";
+import { BsXLg } from "react-icons/bs";
 import { SignedInContext } from "../App";
 
 const Navbar = () => {
@@ -61,7 +62,7 @@ const Navbar = () => {
 
 					<nav className={sidebar ? "nav-menu active" : "nav-menu"} onClick={showSidebar}>
 						<div className="close-button">
-							<AiIcons.AiOutlineClose />
+							<BsXLg />
 						</div>
 
 						<ul className="links-group">
@@ -90,7 +91,7 @@ const Navbar = () => {
 								<Link to={"/accountsetting"}>Account settings</Link>
 							</li>
 							<li className={"nav-text"}>
-								<Link to={"/transaction"}>Transaction history</Link>
+								<Link to={"/listings/:id/purchase"}>Transaction history</Link>
 							</li>
 							<li className={"nav-text"}>
 								<Link to={"/listings/:id/payment"}>Card details</Link>

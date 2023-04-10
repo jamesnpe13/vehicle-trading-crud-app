@@ -32,6 +32,7 @@ export default function PageRouter({ postsData, fetchAllPosts }) {
 					<Route path="/myListings" element={<MyListing />} />
 					<Route path="/listings/:id/purchase" element={<Purchase />} />
 					<Route path="/listings/:id/payment" element={<Payment />} />
+					<Route path="/listings/:id/payment/confirmation" element={<Confirmation />} />
 					<Route path="/mylistings/:id/edit" element={<EditList />} />
 					<Route path="/listings/create" element={<CreateList />} />
 					<Route path="/search" element={<Search />} />

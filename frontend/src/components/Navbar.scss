@@ -58,6 +58,7 @@
 		height: 100vh;
 		transition: all 0.25s ease-out;
 		font-size: 1em;
+		z-index: 10;
 
 		&.active {
 			transform: translateX(0);
