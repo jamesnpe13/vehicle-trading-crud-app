@@ -53,7 +53,7 @@ const Card = ({ itemData, listingOwned }) => {
 				{!listingOwned && (
 					<p className="location property">
 						<img src={locationimg} />
-						{itemData.location}
+						<p>{itemData.location}</p>
 					</p>
 				)}
 				<p className="price">${itemData.price}</p>

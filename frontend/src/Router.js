@@ -9,6 +9,7 @@ import Account from "./pages/Account";
 
 // useContext
 import { SignedInContext } from "./App";
+import CreateListing from "./pages/CreateListing";
 
 export default function PageRouter() {
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
@@ -22,6 +23,7 @@ export default function PageRouter() {
 				<React.Fragment>
 					<Route path="/listings" element={<Home />} />
 					<Route path="/account" element={<Account />} />
+					<Route path="/account/listings/create" element={<CreateListing />} />
 				</React.Fragment>
 			)}
 		</Routes>

@@ -45,9 +45,15 @@ export default function Account() {
 
 	function getRatingAverage(ratingsArray) {
 		let total = 0;
-		for (let item of ratingsArray) {
-			total += item.rating;
+
+		if (ratingsArray.length > 0) {
+			for (let item of ratingsArray) {
+				total += item.rating;
+			}
+		} else {
+			return "Unrated";
 		}
+
 		return parseFloat(total / ratingsArray.length).toFixed(1);
 	}
 
@@ -76,7 +82,7 @@ export default function Account() {
 								<div className="property">
 									<p className="label">Rating</p>
 									<p className="rating">
-										{(userRating && userRating) || "Unrated"}
+										{userRating && userRating}
 										<img src={ratingImg} />
 									</p>
 								</div>
@@ -88,7 +94,7 @@ export default function Account() {
 							<div className="listings-container">
 								{userListings &&
 									userListings.map((item) => {
-										return <ListingCard itemData={item} listingOwned={true} />;
+										return <ListingCard key={item._id} itemData={item} listingOwned={true} />;
 									})}
 							</div>
 							<button className="create-listing button primary span">Create new listing</button>
@@ -99,7 +105,7 @@ export default function Account() {
 							<div className="listings-container">
 								{userBookmarks &&
 									userBookmarks.map((item) => {
-										return <ListingCard itemData={item} />;
+										return <ListingCard key={item._id} itemData={item} />;
 									})}
 							</div>
 						</section>

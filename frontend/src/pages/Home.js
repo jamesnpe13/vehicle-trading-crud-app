@@ -1,10 +1,11 @@
 import "./Home.scss";
 import Card from "../components/ListCard";
+import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
 import PageLocation from "../components/PageLocation";
 export default function Home() {
 	const pageTitle = "Browse listings";
-	const [listingsData, setListingsData] = useState([]);
+	const [listingsData, setListingsData] = useState(undefined);
 
 	async function fetchData() {
 		const response = await fetch("http://localhost:5000/listings");
