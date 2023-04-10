@@ -4,20 +4,14 @@ import React, { useContext } from "react";
 // pages
 import Notfound from "./pages/Notfound";
 import Home from "./pages/Home";
-import EditList from "./pages/EditList";
-import CreateList from "./pages/CreateListing";
-import Search from "./pages/Search";
-import ListingDetail from "./pages/ListingDetail";
-// import Details from "./pages/Details";
-import Purchase from "./pages/Purchase";
-import Payment from "./pages/Payment";
-import Confirmation from "./pages/Confirmation";
-import MyListing from "./pages/MyListing";
 import Signin from "./pages/Signin";
+import Account from "./pages/Account";
 
+// useContext
 import { SignedInContext } from "./App";
+import CreateListing from "./pages/CreateListing";
 
-export default function PageRouter({ postsData, fetchAllPosts }) {
+export default function PageRouter() {
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
 
 	return (
@@ -28,12 +22,8 @@ export default function PageRouter({ postsData, fetchAllPosts }) {
 			{signedIn && (
 				<React.Fragment>
 					<Route path="/listings" element={<Home />} />
-					<Route path="/listings/:id" element={<ListingDetail />} />
-					<Route path="/myListings" element={<MyListing />} />
-					<Route path="/listings/:id/purchase" element={<Purchase />} />
-					<Route path="/mylistings/:id/edit" element={<EditList />} />
-					<Route path="/mylistings/create" element={<CreateList />} />
-					<Route path="/search" element={<Search />} />
+					<Route path="/account" element={<Account />} />
+					<Route path="/account/listings/create" element={<CreateListing />} />
 				</React.Fragment>
 			)}
 		</Routes>

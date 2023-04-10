@@ -1,0 +1,83 @@
+@import "../base/base.scss";
+
+.Account {
+	.main {
+		.content-container {
+			.section-container {
+				display: flex;
+				flex-direction: column;
+				gap: $gap-section-1;
+
+				.account-details {
+					.properties-wrapper {
+						display: flex;
+						flex-direction: column;
+						gap: 10px;
+
+						.label {
+							font-size: $font-size-body-1;
+							font-weight: $font-weight-bold;
+						}
+
+						.value {
+							font-size: $font-size-body-1;
+						}
+					}
+					.rating {
+						display: flex;
+						align-items: center;
+						gap: 5px;
+
+						img {
+							height: 18px;
+							width: 18px;
+							object-fit: contain;
+						}
+					}
+
+					h3 {
+						grid-column: 1 / -1;
+					}
+
+					.key {
+						font-weight: 600;
+					}
+				}
+
+				.my-listings,
+				.bookmarks {
+					display: flex;
+					flex-direction: column;
+					gap: 10px;
+				}
+
+				.listings-container {
+					display: flex;
+					flex-direction: column;
+					gap: $gap-section-2;
+					margin-bottom: 30px;
+
+					.listing-item {
+						// background-color: white;
+						padding-block: $padding-panel-2;
+						display: flex;
+						justify-content: space-between;
+						border-block: 1px solid rgb(223, 223, 223);
+
+						h3 {
+							font-size: $font-size-body-1;
+						}
+
+						p {
+							font-size: $font-size-body-2;
+						}
+
+						// &:nth-of-type(even) {
+						// 	background-color: $color-grey-v1;
+						// }
+					}
+				}
+			}
+		}
+	}
+}

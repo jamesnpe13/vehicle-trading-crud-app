@@ -15,11 +15,24 @@ $color-grey-v2: #929aa5;
 
 // font sizes
 $font-size-header-1: 2em;
-$font-size-header-2: 1.8em;
-$font-size-header-3: 1.5em;
-$font-size-body-1: 1em;
+$font-size-header-2: 1.4em;
+$font-size-header-3: 1.2em;
+$font-size-body-1: 0.9em;
 $font-size-body-2: 0.8em;
+
+// font weights
+$font-weight-black: 1000;
+$font-weight-bold: 600;
+$font-weight-normal: 500;
+$font-weight-light: 400;
+
 
 // paddings
 $padding-panel-1: 30px;
 $padding-panel-2: 15px;
+$padding-panel-3: 10px;
+
+// gaps
+$gap-section-1: 50px;
+$gap-section-2: 20px;
+$gap-section-3: 10px;

@@ -1,0 +1,13 @@
+.PageLocation {
+	user-select: none;
+	display: flex;
+	align-items: center;
+	gap: 30px;
+
+	.back-button {
+		height: 20px;
+		width: 20px;
+		object-fit: contain;
+	}
+
+}

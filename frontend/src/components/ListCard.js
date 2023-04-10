@@ -7,14 +7,58 @@ import personimg from "../images/person.svg";
 import transmissionimg from "../images/transmission.svg";
 import yearimg from "../images/year.svg";
 import colorimg from "../images/color.svg";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import placeholderImg from "../images/graphic1.svg";
 
-const Card = ({ itemData }) => {
+const Card = ({ itemData, listingOwned }) => {
+	// useEffect(() => {
+	// 	fetchOwner();
+	// }, []);
+
+	// async function fetchOwner() {
+	// 	const response = await fetch(`http://localhost:5000/members/`);
+	// 	const data = await response.json();
+	// 	setListingOwner(data.display_name);
+
+	// 	console.log(itemData);
+	// }
 	return (
 		<div className="card">
-			<div className="carousel"></div>
+			<img src={placeholderImg} alt="" className="thumbnail" />
+
+			<div className="info-container">
+				<h3 className="title">{itemData.title}</h3>
+				<p className="make-model-year">
+					{itemData.vehicle.make} {itemData.vehicle.model} {itemData.vehicle.year}
+				</p>
+				<p className="mileage property">
+					<img src={odometerimg} />
+					{itemData.vehicle.mileage}kms
+				</p>
+
+				<div className="extension">
+					<p className="transmission property">
+						<img src={transmissionimg} />
+						{itemData.vehicle.transmission}
+					</p>
+					<p className="body-type property">
+						<img src={carimg} />
+						{itemData.vehicle.body_type}
+					</p>
+					{!listingOwned && <p className="seller">{itemData.owner_id.display_name}</p>}
+				</div>
+
+				{!listingOwned && (
+					<p className="location property">
+						<img src={locationimg} />
+						<p>{itemData.location}</p>
+					</p>
+				)}
+				<p className="price">${itemData.price}</p>
+			</div>
+
 			{/* <Splide
 				className="splide"
 				options={{
@@ -29,7 +73,7 @@ const Card = ({ itemData }) => {
 				</SplideSlide>
 			</Splide> */}
 
-			<div className="card-info">
+			{/* <div className="card-info">
 				<h2 className="list-title">{itemData.title}</h2>
 				<div className="specs">
 					<div className="main-specs prop-panel">
@@ -73,7 +117,7 @@ const Card = ({ itemData }) => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };

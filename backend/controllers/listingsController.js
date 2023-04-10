@@ -50,6 +50,8 @@ exports.createNewListing = async (req, res) => {
 			transmission: req.body.vehicle.transmission,
 			body_type: req.body.vehicle.body_type,
 			color: req.body.vehicle.color,
+			seats: req.body.vehicle.seats,
+			fuel_type: req.body.vehicle.fuel_type,
 			registration: {
 				valid: req.body.vehicle.registration.valid,
 				registration_number: req.body.vehicle.registration.registration_number,

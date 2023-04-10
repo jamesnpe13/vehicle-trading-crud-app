@@ -17,7 +17,6 @@ export default function App() {
 	// user signed in check
 	useEffect(() => {
 		checkActiveUser();
-		console.log("USER SIGNED IN: " + signedIn);
 	}, [signedIn]);
 
 	function checkActiveUser() {
