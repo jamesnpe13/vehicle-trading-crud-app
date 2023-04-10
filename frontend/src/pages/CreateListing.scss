@@ -19,22 +19,6 @@
 			border-radius: 10px;
 		}
 
-		textarea,
-		input[type="text"],
-		input[type="number"],
-		input[type="date"],
-		select {
-			font-size: $font-size-body-1;
-			font-family: inherit;
-			padding: $padding-panel-3;
-			border: 1px solid $color-grey-v2;
-			border-radius: 5px;
-			outline: none;
-
-			// &: {
-			// 	border: 1px solid red;
-			// }
-		}
 		.description {
 			resize: none;
 			height: 200px;
