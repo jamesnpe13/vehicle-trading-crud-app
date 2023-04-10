@@ -1,0 +1,17 @@
+@import "../base/base.scss";
+
+.Signin {
+	.main {
+		.content-container {
+			max-width: 300px;
+			.section-container {
+				display: flex;
+				justify-content: center;
+			}
+		}
+
+		form {
+			width: 100%;
+		}
+	}
+}

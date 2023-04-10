@@ -4,6 +4,7 @@ import { SignedInContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 export default function Signin() {
+	const pageTitle = "Sign in";
 	const navigate = useNavigate();
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
 	const [userInput, setUserInput] = useState({});
@@ -84,11 +85,14 @@ export default function Signin() {
 		<div className="Signin page">
 			<div className="main">
 				<div className="content-container">
-					<form onSubmit={handleSubmit}>
-						<input type="text" placeholder="Username" required={true} onChange={handleChangeUsername} />
-						<input type="text" placeholder="Password" required={true} onChange={handleChangePassword} />
-						<button type="submit">Sign in</button>
-					</form>
+					<div className="page-title">{pageTitle}</div>
+					<div className="section-container">
+						<form onSubmit={handleSubmit}>
+							<input type="text" placeholder="Username" required={true} onChange={handleChangeUsername} />
+							<input type="password" placeholder="Password" required={true} onChange={handleChangePassword} />
+							<button className="button primary span" type="submit">Sign in</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

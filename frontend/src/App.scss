@@ -61,6 +61,25 @@ body {
 	}
 }
 
+form {
+	display: flex;
+	flex-direction: column;
+	gap: $padding-panel-3;
+}
+textarea,
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="password"],
+select {
+	font-size: $font-size-body-1;
+	font-family: inherit;
+	padding: $padding-panel-3;
+	border: 1px solid $color-grey-v2;
+	border-radius: 5px;
+	outline: none;
+}
+
 .App {
 	height: 100vh;
 	overflow: hidden;
@@ -110,7 +129,7 @@ body {
 					font-weight: $font-weight-black;
 					margin-bottom: $padding-panel-2;
 				}
-				
+
 				.section-container {
 					section {
 						.section-title {
