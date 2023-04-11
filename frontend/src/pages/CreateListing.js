@@ -1,9 +1,11 @@
 import "./CreateListing.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 export default function CreateListing({ editMode }) {
+	const navigate = useNavigate()
 	const pageTitle = editMode ? "Edit listing" : "Create a new listing";
 	const [reqBody, setReqBody] = useState({ vehicle: { registration: {}, wof: {} } });
 	const [listingData, setListingData] = useState(null);
@@ -96,24 +98,37 @@ export default function CreateListing({ editMode }) {
 		}
 	}
 
+	// function delayAndGo(e, path) {
+	// 	e.preventDefault();
+	// 	setTimeout(()=> navigate.push(path),1000);
+	// }
+
 	function handleFormSubmit(e) {
 		e.preventDefault();
 		console.log("sending form");
 		sendRequest();
 	}
 
+
+
 	async function sendRequest() {
 		if (!editMode) {
 			axios
 				.post("http://localhost:5000/listings", reqBody)
-				.then((res) => console.log(res))
+				.then((res) => {
+					console.log(res);
+					if (!res.data.error){
+						navigate(`/account`)}
+				})
 				.catch((err) => console.log(err));
+
+				
 		}
 
 		if (editMode) {
 			axios
 				.put(`http://localhost:5000/listings/${id}`, reqBody)
-				.then((res) => console.log(res))
+				.then((res) =>  console.log(res))
 				.catch((err) => console.log(err));
 		}
 	}
@@ -142,7 +157,7 @@ export default function CreateListing({ editMode }) {
 				<div className="content-container">
 					<div className="page-title">{pageTitle}</div>
 					{render && (
-						<form onSubmit={handleFormSubmit}>
+						<form  onSubmit={handleFormSubmit}>
 							<div className="section-container">
 								<section>
 									<div className="carousel"></div>
