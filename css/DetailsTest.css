@@ -1,0 +1,25 @@
+.chip-specs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.chip-specs p {
+  outline: 1.5px solid #929aa5;
+  border-radius: 100px;
+  margin: 5px;
+  padding: 10px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.req-button {
+  background-color: #3d38f1;
+  color: #f3f5f9;
+}/*# sourceMappingURL=DetailsTest.css.map */

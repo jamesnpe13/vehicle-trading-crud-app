@@ -1,0 +1,24 @@
+@import "../base/base.scss";
+
+.chip-specs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.chip-specs p {
+    outline: 1.5px solid $color-grey-v2;
+    border-radius: 100px;
+    margin: 5px;
+    padding: 10px;
+}
+button {
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.req-button {
+    background-color: $color-primary-v1;
+    color: $color-white-v1;
+}

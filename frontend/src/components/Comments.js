@@ -68,8 +68,8 @@ const Comments = ({ commentsArray, itemId, fetchItemData }) => {
                     commentsArray.map((item) => {
                         return <p className="comment">{item.body}</p>;
                     })}
-                <div className="type-comment">
-                    <form onSubmit={handleSubmit}>
+                <div>
+                    <form className="type-comment" onSubmit={handleSubmit}>
                         <input
                             onChange={handleCommentChange}
                             placeholder="type here..."
