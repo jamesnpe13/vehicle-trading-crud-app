@@ -14,6 +14,7 @@ import placeholderImg from "../images/graphic1.svg";
 import Options from "./Options";
 
 const Card = ({ itemData }) => {
+	
 	const [listingOwned, setListingOwned] = useState(false);
 
 	useEffect(() => {
@@ -35,6 +36,7 @@ const Card = ({ itemData }) => {
 			}
 		}
 	}
+	
 
 	return (
 		<div className="card">
@@ -131,6 +133,7 @@ const Card = ({ itemData }) => {
 					</div>
 				</div>
 			</div> */}
+			
 		</div>
 	);
 };
