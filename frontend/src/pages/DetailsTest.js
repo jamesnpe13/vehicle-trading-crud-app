@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comments from "../components/Comments";
 import graphic1 from "../images/graphic1.svg";
+import person from "../images/person.svg";
 import "./DetailsTest.scss";
 
 import PageLocation from "../components/PageLocation";
@@ -48,12 +49,19 @@ export default function Details() {
                 <div className="content-container">
                     {/* <div className="page-title">{pageTitle}</div> */}
                     <div className="section-container">
-                        {itemData.length > 0 && (
+                        {itemData.vehicle && (
                             <div className="details-wrapper">
-                                <img src={graphic1} />
-                                <h1>{itemData.title}</h1>
-                                <h1>${itemData.price}</h1>
-                                <h3>{ownerData.display_name}</h3>
+                                <div className="image-wrapper">
+                                    <img src={graphic1} className="main-img" />
+                                </div>
+                                <div className="heading-price">
+                                    <h1>{itemData.title}</h1>
+                                    <h1 className="price">${itemData.price}</h1>
+                                </div>
+                                <div className="dis-name">
+                                    <img src={person} />
+                                    <p>{ownerData.display_name}</p>
+                                </div>{" "}
                                 <div className="chip-specs">
                                     <p>Make: {itemData.vehicle.make}</p>
                                     <p>Model: {itemData.vehicle.model}</p>
@@ -69,13 +77,20 @@ export default function Details() {
                                     <p>Fuel: {itemData.vehicle.fuel_type}</p>
                                     <p>Seats: {itemData.vehicle.seats}</p>
                                 </div>
-                                <p>{itemData.description}</p>
-                                <button className="req-button">
-                                    Request a viewing
-                                </button>
-                                <button className="buy-button">Buy now</button>
+                                <p className="description">
+                                    {itemData.description}
+                                </p>
+                                <div className="buttons">
+                                    <button className="req-button">
+                                        Request a viewing
+                                    </button>
+                                    <button className="buy-button">
+                                        Buy now
+                                    </button>
+                                </div>
                             </div>
                         )}
+                        <h1 className="qa-head">Questions & answers</h1>
                         <Comments
                             fetchItemData={fetchItemData}
                             itemId={itemData._id}

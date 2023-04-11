@@ -1,3 +1,18 @@
+.details-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .chip-specs {
   display: flex;
   flex-direction: row;
@@ -17,9 +32,64 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  padding: 10px;
+  font-size: 1.3rem;
+  margin: 10px;
 }
 
 .req-button {
   background-color: #3d38f1;
   color: #f3f5f9;
+  box-shadow: #929aa5 0px 0px 10px 0px;
+}
+
+.buy-button {
+  background-color: #74ac6c;
+  color: #f3f5f9;
+  font-weight: 600;
+  box-shadow: #929aa5 0px 0px 10px 0px;
+}
+
+.description {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 80%;
+}
+
+.price {
+  color: #3d38f1;
+  justify-content: flex-end;
+  display: flex;
+  font-size: 2.5rem;
+}
+
+.dis-name {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.dis-name img {
+  width: 1.3rem;
+}
+
+.buttons {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.qa-head {
+  color: #323776;
+  justify-content: center;
+}
+
+.heading-price {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: space-between;
 }/*# sourceMappingURL=DetailsTest.css.map */

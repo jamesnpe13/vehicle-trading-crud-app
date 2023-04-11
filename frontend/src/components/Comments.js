@@ -50,7 +50,7 @@ const Comments = ({ commentsArray, itemId, fetchItemData }) => {
     async function formSubmit() {
         axios
             .put(`/listings/${itemId}/comments`, {
-                ownder_id: reqBody.owner_id,
+                owner_id: reqBody.owner_id,
                 post_date: reqBody.post_date,
                 body: commentBody,
             })
@@ -61,12 +61,23 @@ const Comments = ({ commentsArray, itemId, fetchItemData }) => {
             .catch((err) => console.log(err));
     }
 
+    // async function getUserData(id) {
+    //     const response = await fetch(`http://localhost500/members/${id}`);
+    //     const data = await response.json();
+    //     return data.display_name;
+    // }
+
     return (
         <div className="comments-wrapper">
             <div>
                 {commentsArray &&
                     commentsArray.map((item) => {
-                        return <p className="comment">{item.body}</p>;
+                        return (
+                            <p className="comment">
+                                {item.body}
+                                <div className="date">{item.post_date}</div>
+                            </p>
+                        );
                     })}
                 <div>
                     <form className="type-comment" onSubmit={handleSubmit}>

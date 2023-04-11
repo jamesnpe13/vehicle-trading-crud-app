@@ -1,13 +1,14 @@
 .comments-wrapper {
   display: flex;
   flex-direction: column;
-  background-color: #323776;
+  background-color: #f3f5f9;
   width: 100%;
+  border-radius: 10px;
 }
 
 .comment {
-  color: #323776;
-  background-color: #f3f5f9;
+  color: #f3f5f9;
+  background-color: #323776;
   width: -moz-fit-content;
   width: fit-content;
   padding: 10px;
@@ -20,6 +21,7 @@
   flex-direction: row;
   margin: 15px;
   gap: 10px;
+  align-items: center;
 }
 
 .type-comment button {
@@ -33,8 +35,17 @@
 
 .type-comment input {
   width: 100%;
+  height: 50px;
   padding: 10px;
-  border: none;
+  border: #323776 1px solid;
   border-radius: 10px;
   font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+.date {
+  color: #929aa5;
 }/*# sourceMappingURL=Comments.css.map */

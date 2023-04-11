@@ -91,7 +91,9 @@ exports.editListing = async (req, res) => {
 
 // get listing comments
 exports.getListingComments = async (req, res) => {
-    const targetListing = await Listing.findById(req.params.id);
+    const targetListing = await Listing.findById(req.params.id).populate(
+        "owner_id"
+    );
     const commentsArray = targetListing.comments;
 
     res.json(commentsArray);
