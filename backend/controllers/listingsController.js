@@ -22,7 +22,7 @@ exports.getAllListings = async (req, res) => {
 // get a listing by ID
 exports.getListingById = async (req, res) => {
 	try {
-		const result = await Listing.find({ _id: req.params.id });
+		const result = await Listing.findOne({ _id: req.params.id });
 		res.json(result);
 	} catch (error) {
 		console.log(error);

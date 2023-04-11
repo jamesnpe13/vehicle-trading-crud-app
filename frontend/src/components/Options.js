@@ -14,7 +14,7 @@ export default function Options({ listingOwned, listingId }) {
 		owner: () => {
 			return (
 				<>
-					<p className="option" data-path={`/listings/${listingId}`} onClick={handleOptionSelect}>
+					<p className="option" data-path={`/account/listings/${listingId}/edit`} onClick={handleOptionSelect}>
 						Edit
 					</p>
 					<p className="option">Delete</p>

@@ -6,10 +6,34 @@
 		flex-direction: column;
 		gap: $gap-section-2;
 
-		section {
+		.flex-container {
 			display: flex;
-			flex-direction: column;
-			gap: 20px;
+			gap: $gap-section-2;
+			row-gap: $gap-section-3;
+
+			section {
+				display: flex;
+				flex-direction: column;
+				gap: $gap-section-3;
+				width: 100%;
+
+				.property {
+					display: flex;
+					gap: $gap-section-3;
+
+					select {
+						width: 100%;
+					}
+
+					input[type="date"] {
+						min-width: 150px;
+					}
+				}
+
+				button[type="submit"] {
+					margin-top: $gap-section-2;
+				}
+			}
 		}
 
 		.carousel {
@@ -22,6 +46,12 @@
 		.description {
 			resize: none;
 			height: 200px;
+		}
+	}
+
+	@media screen and (width < $breakpoint-2) {
+		.flex-container {
+			flex-direction: column;
 		}
 	}
 }
