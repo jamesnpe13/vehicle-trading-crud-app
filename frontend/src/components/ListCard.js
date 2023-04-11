@@ -16,21 +16,26 @@ import Options from "./Options";
 const Card = ({ itemData }) => {
 	const [listingOwned, setListingOwned] = useState(false);
 
-	function checkListingOwned() {
-		const userId = JSON.parse(window.localStorage.getItem("active_user"))._id;
-
-		if (userId === itemData.owner_id._id) {
-			setListingOwned(true);
-
-			return;
-		}
-	}
-
 	useEffect(() => {
 		checkListingOwned();
 	}, []);
 
-	// }
+	function checkListingOwned() {
+		const userId = JSON.parse(window.localStorage.getItem("active_user"))._id;
+
+		if (itemData.owner_id._id) {
+			if (itemData.owner_id._id === userId) {
+				setListingOwned(true);
+				return;
+			}
+		} else {
+			if (userId === itemData.owner_id) {
+				setListingOwned(true);
+				return;
+			}
+		}
+	}
+
 	return (
 		<div className="card">
 			<img src={placeholderImg} alt="" className="thumbnail" />
@@ -54,7 +59,7 @@ const Card = ({ itemData }) => {
 						<img src={carimg} />
 						{itemData.vehicle.body_type}
 					</p>
-					{!listingOwned && <p className="seller">{itemData.owner_id.display_name}</p>}
+					{listingOwned ? <p className="seller">You own this listing</p> : <p className="seller">{itemData.owner_id.display_name}</p>}
 				</div>
 
 				{!listingOwned && (
@@ -66,7 +71,7 @@ const Card = ({ itemData }) => {
 				<p className="price">${itemData.price}</p>
 			</div>
 
-			<Options listingOwned={listingOwned} />
+			<Options listingOwned={listingOwned} listingId={itemData._id} />
 
 			{/* <Splide
 				className="splide"

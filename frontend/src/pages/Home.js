@@ -15,6 +15,10 @@ export default function Home() {
 	}
 
 	useEffect(() => {
+		console.log(listingsData)
+	}, [listingsData]);
+
+	useEffect(() => {
 		fetchData();
 	}, []);
 

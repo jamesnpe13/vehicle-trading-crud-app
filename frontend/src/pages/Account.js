@@ -18,6 +18,10 @@ export default function Account() {
 	}, []);
 
 	useEffect(() => {
+		console.log(userListings);
+	}, [userListings]);
+
+	useEffect(() => {
 		setUserRating(userData.ratings && getRatingAverage(userData.ratings));
 	}, [userData]);
 

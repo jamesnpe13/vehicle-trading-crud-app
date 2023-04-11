@@ -1,8 +1,11 @@
 @import "../base/base.scss";
 
 .Options {
-	user-select: none;
 	position: relative;
+	user-select: none;
+	cursor: pointer;
+	height: max-content;
+
 	button {
 		display: flex;
 		justify-content: center;
@@ -17,6 +20,8 @@
 	}
 
 	.dropdown {
+		display: flex;
+		flex-direction: column;
 		z-index: 10;
 		position: absolute;
 		top: 35px;
@@ -30,10 +35,10 @@
 
 		.option {
 			color: $color-primary-v3;
-			padding: 5px 20px;
+			padding: 5px 30px;
 			border-radius: 3px;
 			&:hover {
-				background-color: $color-grey-v1;
+				background-color: mix($color-primary-v2, white, 40%);
 			}
 		}
 		&.collapsed {
