@@ -1,9 +1,11 @@
 import "./Account.scss";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ratingImg from "../images/star.svg";
 import ListingCard from "../components/ListCard";
 
 export default function Account() {
+	const navigate = useNavigate();
 	const pageTitle = "My account";
 	const activeUserId = JSON.parse(window.localStorage.getItem("active_user"))._id;
 	const [userData, setUserData] = useState([]);
@@ -97,7 +99,7 @@ export default function Account() {
 										return <ListingCard key={item._id} itemData={item} />;
 									})}
 							</div>
-							<button className="create-listing button primary span">Create new listing</button>
+							<button onClick={()=> navigate(`/account/listings/create`)} className="create-listing button primary span">Create new listing</button>
 						</section>
 
 						<section className="bookmarks">
