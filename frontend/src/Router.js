@@ -6,6 +6,7 @@ import Notfound from "./pages/Notfound";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Account from "./pages/Account";
+import Details from "./pages/DetailsTest";
 
 // useContext
 import { SignedInContext } from "./App";
@@ -25,6 +26,7 @@ export default function PageRouter() {
 					<Route path="/account" element={<Account />} />
 					<Route path="/account/listings/create" element={<CreateListing />} />
 					<Route path="/account/listings/:id/edit" element={<CreateListing editMode={true} />} />
+					<Route path="/listings/:id" element={<Details />} />
 				</React.Fragment>
 			)}
 		</Routes>

@@ -1,0 +1,40 @@
+.comments-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #323776;
+  width: 50%;
+}
+
+.comment {
+  color: #323776;
+  background-color: #f3f5f9;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+.type-comment {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  gap: 10px;
+}
+
+.type-comment button {
+  width: 100px;
+  background-color: #74ac6c;
+  border: none;
+  color: #f3f5f9;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.type-comment input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}/*# sourceMappingURL=Comments.css.map */
