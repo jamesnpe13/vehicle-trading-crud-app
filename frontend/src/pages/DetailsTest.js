@@ -48,32 +48,34 @@ export default function Details() {
                 <div className="content-container">
                     {/* <div className="page-title">{pageTitle}</div> */}
                     <div className="section-container">
-                        <div className="details-wrapper">
-                            <img src={graphic1} />
-                            <h1>{itemData.title}</h1>
-                            <h1>${itemData.price}</h1>
-                            <h3>{ownerData.display_name}</h3>
-                            <div className="chip-specs">
-                                <p>Make: {itemData.vehicle.make}</p>
-                                <p>Model: {itemData.vehicle.model}</p>
-                                <p>Body: {itemData.vehicle.body_type}</p>
+                        {itemData.length > 0 && (
+                            <div className="details-wrapper">
+                                <img src={graphic1} />
+                                <h1>{itemData.title}</h1>
+                                <h1>${itemData.price}</h1>
+                                <h3>{ownerData.display_name}</h3>
+                                <div className="chip-specs">
+                                    <p>Make: {itemData.vehicle.make}</p>
+                                    <p>Model: {itemData.vehicle.model}</p>
+                                    <p>Body: {itemData.vehicle.body_type}</p>
 
-                                <p>Year: {itemData.vehicle.year}</p>
-                                <p>Mileage: {itemData.vehicle.mileage}</p>
-                                <p>Model: {itemData.vehicle.model}</p>
-                                <p>
-                                    Transmission:{" "}
-                                    {itemData.vehicle.transmission}
-                                </p>
-                                <p>Fuel: {itemData.vehicle.fuel_type}</p>
-                                <p>Seats: {itemData.vehicle.seats}</p>
+                                    <p>Year: {itemData.vehicle.year}</p>
+                                    <p>Mileage: {itemData.vehicle.mileage}</p>
+                                    <p>Model: {itemData.vehicle.model}</p>
+                                    <p>
+                                        Transmission:{" "}
+                                        {itemData.vehicle.transmission}
+                                    </p>
+                                    <p>Fuel: {itemData.vehicle.fuel_type}</p>
+                                    <p>Seats: {itemData.vehicle.seats}</p>
+                                </div>
+                                <p>{itemData.description}</p>
+                                <button className="req-button">
+                                    Request a viewing
+                                </button>
+                                <button className="buy-button">Buy now</button>
                             </div>
-                            <p>{itemData.description}</p>
-                            <button className="req-button">
-                                Request a viewing
-                            </button>
-                            <button className="buy-button">Buy now</button>
-                        </div>
+                        )}
                         <Comments
                             fetchItemData={fetchItemData}
                             itemId={itemData._id}
