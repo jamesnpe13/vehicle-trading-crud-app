@@ -25,6 +25,7 @@ export default function PageRouter() {
 					<Route path="/listings" element={<Home />} />
 					<Route path="/account" element={<Account />} />
 					<Route path="/account/listings/create" element={<CreateListing />} />
+					<Route path="/listings/:id" element={<Details />} />
 					<Route path="/account/listings/:id/edit" element={<CreateListing editMode={true} />} />
 					<Route path="/listings/:id" element={<Details />} />
 				</React.Fragment>

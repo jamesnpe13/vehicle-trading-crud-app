@@ -85,7 +85,7 @@ const Comments = ({ commentsArray, itemId, fetchItemData }) => {
                             onChange={handleCommentChange}
                             placeholder="type here..."
                         ></input>
-                        <button type="submit">Send</button>
+                        <button className="message-submit" type="submit">Send</button>
                     </form>
                 </div>
             </div>
