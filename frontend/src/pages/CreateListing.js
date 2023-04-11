@@ -4,11 +4,11 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function CreateListing({ editMode }) {
+	const navigate = useNavigate();
 	const pageTitle = editMode ? "Edit listing" : "Create a new listing";
 	const [reqBody, setReqBody] = useState({ vehicle: { registration: {}, wof: {} } });
 	const [listingData, setListingData] = useState(null);
 	const [render, setRender] = useState(false);
-	const navigate = useNavigate();
 
 	const { id } = useParams();
 
@@ -96,6 +96,11 @@ export default function CreateListing({ editMode }) {
 			e.target.value = `$${e.target.value}`;
 		}
 	}
+
+	// function delayAndGo(e, path) {
+	// 	e.preventDefault();
+	// 	setTimeout(()=> navigate.push(path),1000);
+	// }
 
 	function handleFormSubmit(e) {
 		e.preventDefault();
