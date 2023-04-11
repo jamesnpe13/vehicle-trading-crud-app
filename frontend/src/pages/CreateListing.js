@@ -1,13 +1,14 @@
 import "./CreateListing.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function CreateListing({ editMode }) {
 	const pageTitle = editMode ? "Edit listing" : "Create a new listing";
 	const [reqBody, setReqBody] = useState({ vehicle: { registration: {}, wof: {} } });
 	const [listingData, setListingData] = useState(null);
 	const [render, setRender] = useState(false);
+	const navigate = useNavigate();
 
 	const { id } = useParams();
 
@@ -106,16 +107,36 @@ export default function CreateListing({ editMode }) {
 		if (!editMode) {
 			axios
 				.post("http://localhost:5000/listings", reqBody)
-				.then((res) => console.log(res))
-				.catch((err) => console.log(err));
+				.then((res) => {
+					console.log(res.data);
+					onSuccess();
+				})
+				.catch((err) => {
+					console.log(err);
+					onError();
+				});
 		}
 
 		if (editMode) {
 			axios
-				.put(`http://localhost:5000/listings/${id}`, reqBody)
-				.then((res) => console.log(res))
-				.catch((err) => console.log(err));
+				.put(`http://localhost:50000/listings/${id}`, reqBody)
+				.then((res) => {
+					console.log(res.data);
+					onSuccess();
+				})
+				.catch((err) => {
+					console.log(err);
+					onError();
+				});
 		}
+	}
+
+	function onSuccess() {
+		navigate("/account");
+	}
+
+	function onError() {
+		//
 	}
 
 	// ========== edit mode
