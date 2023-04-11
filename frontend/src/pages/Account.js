@@ -18,12 +18,12 @@ export default function Account() {
 	}, []);
 
 	useEffect(() => {
-		setUserRating(userData.ratings && getRatingAverage(userData.ratings));
-	}, [userData]);
+		console.log(userListings);
+	}, [userListings]);
 
 	useEffect(() => {
-		console.log(userBookmarks);
-	}, [userBookmarks]);
+		setUserRating(userData.ratings && getRatingAverage(userData.ratings));
+	}, [userData]);
 
 	async function fetchUserData() {
 		const response = await fetch(`http://localhost:5000/members/${activeUserId}`);
@@ -94,7 +94,7 @@ export default function Account() {
 							<div className="listings-container">
 								{userListings &&
 									userListings.map((item) => {
-										return <ListingCard key={item._id} itemData={item} listingOwned={true} />;
+										return <ListingCard key={item._id} itemData={item} />;
 									})}
 							</div>
 							<button className="create-listing button primary span">Create new listing</button>

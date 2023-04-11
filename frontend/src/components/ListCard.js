@@ -11,19 +11,31 @@ import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import placeholderImg from "../images/graphic1.svg";
+import Options from "./Options";
 
-const Card = ({ itemData, listingOwned }) => {
-	// useEffect(() => {
-	// 	fetchOwner();
-	// }, []);
+const Card = ({ itemData }) => {
+	const [listingOwned, setListingOwned] = useState(false);
 
-	// async function fetchOwner() {
-	// 	const response = await fetch(`http://localhost:5000/members/`);
-	// 	const data = await response.json();
-	// 	setListingOwner(data.display_name);
+	useEffect(() => {
+		checkListingOwned();
+	}, []);
 
-	// 	console.log(itemData);
-	// }
+	function checkListingOwned() {
+		const userId = JSON.parse(window.localStorage.getItem("active_user"))._id;
+
+		if (itemData.owner_id._id) {
+			if (itemData.owner_id._id === userId) {
+				setListingOwned(true);
+				return;
+			}
+		} else {
+			if (userId === itemData.owner_id) {
+				setListingOwned(true);
+				return;
+			}
+		}
+	}
+
 	return (
 		<div className="card">
 			<img src={placeholderImg} alt="" className="thumbnail" />
@@ -47,17 +59,19 @@ const Card = ({ itemData, listingOwned }) => {
 						<img src={carimg} />
 						{itemData.vehicle.body_type}
 					</p>
-					{!listingOwned && <p className="seller">{itemData.owner_id.display_name}</p>}
+					{listingOwned ? <p className="seller">You own this listing</p> : <p className="seller">{itemData.owner_id.display_name}</p>}
 				</div>
 
 				{!listingOwned && (
-					<p className="location property">
+					<div className="location property">
 						<img src={locationimg} />
 						<p>{itemData.location}</p>
-					</p>
+					</div>
 				)}
 				<p className="price">${itemData.price}</p>
 			</div>
+
+			<Options listingOwned={listingOwned} listingId={itemData._id} />
 
 			{/* <Splide
 				className="splide"

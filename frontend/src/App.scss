@@ -31,6 +31,8 @@ body {
 	font-size: calc($font-size-body-1 + 0.2em);
 	width: max-content;
 	font-weight: $font-weight-normal;
+	user-select: none;
+	cursor: pointer;
 
 	&.primary {
 		background-color: $color-primary-v1;
