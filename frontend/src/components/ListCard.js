@@ -59,9 +59,8 @@ const Card = ({ itemData }) => {
 						<img src={carimg} />
 						{itemData.vehicle.body_type}
 					</p>
-					{listingOwned ? <p className="seller">You own this listing</p> : <p className="seller">{itemData.owner_id.display_name}</p>}
 				</div>
-
+				{listingOwned ? <p className="seller">You own this listing</p> : <p className="seller">{itemData.owner_id.display_name}</p>}
 				{!listingOwned && (
 					<div className="location property">
 						<img src={locationimg} />
