@@ -1,5 +1,5 @@
 import "./Home.scss";
-import Card from "../components/ListCard";
+import ListingCard from "../components/ListCard";
 import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
 import PageLocation from "../components/PageLocation";
@@ -30,7 +30,7 @@ export default function Home() {
 					<div className="section-container">
 						{listingsData &&
 							listingsData.map((item) => {
-								return <Card key={item._id} itemData={item} />;
+								return <ListingCard key={item._id} itemData={item} />;
 							})}
 					</div>
 				</div>

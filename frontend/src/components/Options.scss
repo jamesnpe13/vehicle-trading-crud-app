@@ -1,0 +1,43 @@
+@import "../base/base.scss";
+
+.Options {
+	user-select: none;
+	position: relative;
+	button {
+		display: flex;
+		justify-content: center;
+		padding: 12px 12px;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+
+		img {
+			width: 20px;
+		}
+	}
+
+	.dropdown {
+		z-index: 10;
+		position: absolute;
+		top: 35px;
+		right: 0;
+		background-color: $color-white-v1;
+		border: 1px solid $color-primary-v3;
+		border-radius: 5px;
+		padding: 5px;
+		padding-block: 5px;
+		font-weight: bold;
+
+		.option {
+			color: $color-primary-v3;
+			padding: 5px 20px;
+			border-radius: 3px;
+			&:hover {
+				background-color: $color-grey-v1;
+			}
+		}
+		&.collapsed {
+			display: none;
+		}
+	}
+}

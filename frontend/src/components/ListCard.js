@@ -11,18 +11,25 @@ import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import placeholderImg from "../images/graphic1.svg";
+import Options from "./Options";
 
-const Card = ({ itemData, listingOwned }) => {
-	// useEffect(() => {
-	// 	fetchOwner();
-	// }, []);
+const Card = ({ itemData }) => {
+	const [listingOwned, setListingOwned] = useState(false);
 
-	// async function fetchOwner() {
-	// 	const response = await fetch(`http://localhost:5000/members/`);
-	// 	const data = await response.json();
-	// 	setListingOwner(data.display_name);
+	function checkListingOwned() {
+		const userId = JSON.parse(window.localStorage.getItem("active_user"))._id;
 
-	// 	console.log(itemData);
+		if (userId === itemData.owner_id._id) {
+			setListingOwned(true);
+
+			return;
+		}
+	}
+
+	useEffect(() => {
+		checkListingOwned();
+	}, []);
+
 	// }
 	return (
 		<div className="card">
@@ -51,13 +58,15 @@ const Card = ({ itemData, listingOwned }) => {
 				</div>
 
 				{!listingOwned && (
-					<p className="location property">
+					<div className="location property">
 						<img src={locationimg} />
 						<p>{itemData.location}</p>
-					</p>
+					</div>
 				)}
 				<p className="price">${itemData.price}</p>
 			</div>
+
+			<Options listingOwned={listingOwned} />
 
 			{/* <Splide
 				className="splide"
