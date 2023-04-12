@@ -11,6 +11,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.use("/images", express.static("uploads"));
+
 // routes
 const listings = require("./routes/Listings");
 const members = require("./routes/Members");

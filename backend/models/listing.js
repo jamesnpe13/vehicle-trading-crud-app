@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 
 const listingSchema = new mongoose.Schema({
-	owner_id: {
-		type: mongoose.Types.ObjectId,
-		required: true,
-		ref: "Member",
-	},
+    owner_id: {
+        type: mongoose.Types.ObjectId,
+        required: true,
+        ref: "Member",
+    },
+
+	images: [String],
 
 	title: { type: String, required: true },
 	description: { type: String, required: true },
@@ -26,18 +28,18 @@ const listingSchema = new mongoose.Schema({
 			expiration: { type: String, required: true },
 		}),
 
-		wof: new mongoose.Schema({
-			valid: Boolean,
-			expiration: { type: String, required: true },
-		}),
-	}),
-	comments: [
-		new mongoose.Schema({
-			owner_id: String,
-			body: String,
-			post_date: String,
-		}),
-	],
+        wof: new mongoose.Schema({
+            valid: Boolean,
+            expiration: { type: String, required: true },
+        }),
+    }),
+    comments: [
+        new mongoose.Schema({
+            owner_id: String,
+            body: String,
+            post_date: String,
+        }),
+    ],
 });
 
 module.exports = mongoose.model("Listing", listingSchema);

@@ -13,6 +13,7 @@ const msgList = {
 export default function CreateListing({ editMode }) {
 	const navigate = useNavigate();
 	const pageTitle = editMode ? "Edit listing" : "Create a new listing";
+	const [imagesArray, setImagesArray] = useState(null);
 	const [reqBody, setReqBody] = useState({ vehicle: { registration: {}, wof: {} } });
 	const [listingData, setListingData] = useState(null);
 	const [render, setRender] = useState(false);
@@ -37,6 +38,10 @@ export default function CreateListing({ editMode }) {
 	}, [ToastStatus]);
 
 	const { id } = useParams();
+
+	useEffect(() => {
+		console.log(imagesArray);
+	}, [imagesArray]);
 
 	useEffect(() => {
 		if (!editMode) {
@@ -107,6 +112,10 @@ export default function CreateListing({ editMode }) {
 		setReqBody(reqBodyDupe);
 	}
 
+	function handleImageChange(e) {
+		setImagesArray(e.target.files);
+	}
+
 	useEffect(() => {
 		console.log(reqBody);
 	}, [reqBody]);
@@ -126,14 +135,28 @@ export default function CreateListing({ editMode }) {
 	function handleFormSubmit(e) {
 		e.preventDefault();
 		console.log("sending form");
-		sendRequest();
+		let formData = new FormData();
+
+		const bodyStringified = JSON.stringify(reqBody);
+		formData.append("content", bodyStringified);
 		
+		if (!editMode) {
+			for (let image of imagesArray) {
+				formData.append("files", image);
+			}
+		}
+
+		if (editMode) {
+			sendRequest(reqBody);
+		} else {
+			sendRequest(formData);
+		}
 	}
 
-	async function sendRequest() {
+	async function sendRequest(formData) {
 		if (!editMode) {
 			axios
-				.post("http://localhost:5000/listings", reqBody)
+				.post("http://localhost:5000/listings", formData)
 				.then((res) => {
 					console.log(res);
 					onSuccess();
@@ -146,7 +169,7 @@ export default function CreateListing({ editMode }) {
 
 		if (editMode) {
 			axios
-				.put(`http://localhost:5000/listings/${id}`, reqBody)
+				.put(`http://localhost:5000/listings/${id}`, formData)
 				.then((res) => {
 					console.log(res.data);
 					onSuccess();
@@ -204,6 +227,7 @@ export default function CreateListing({ editMode }) {
 						<form onSubmit={handleFormSubmit}>
 							<div className="section-container">
 								<section>
+									{!editMode && <input type="file" name="files" id="files" onChange={handleImageChange} accept=".jpg, .png" required />}
 									<div className="carousel"></div>
 								</section>
 								<div className="flex-container">

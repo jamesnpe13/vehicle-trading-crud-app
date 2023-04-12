@@ -1,0 +1,27 @@
+.carousel-wrapper {
+  min-width: 100%;
+  width: 100%;
+}
+.carousel-wrapper .slide {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+  aspect-ratio: 2/1;
+}
+.carousel-wrapper .slide img {
+  min-width: 100%;
+  min-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+@media screen and (width < 1200px) {
+  .carousel-wrapper .slide {
+    aspect-ratio: 1/1;
+  }
+}
+.carousel-wrapper li .splide__pagination__page {
+  border-radius: 10px;
+}
+.carousel-wrapper li .splide__pagination__page.is-active {
+  background-color: #323776;
+}/*# sourceMappingURL=Carousel.css.map */

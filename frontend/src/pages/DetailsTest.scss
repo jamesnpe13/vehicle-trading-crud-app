@@ -1,0 +1,106 @@
+@import "../base/base.scss";
+
+.Details {
+    .details-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        button {
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: $font-size-header-3;
+            margin: 10px;
+        }
+    }
+
+    button.message-submit {
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: $font-size-header-3;
+        margin: 10px;
+    }
+    .main-img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .image-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .chip-specs {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .chip-specs p {
+        outline: 1.5px solid $color-grey-v2;
+        border-radius: 100px;
+        margin: 5px;
+        padding: 10px;
+    }
+
+    .req-button {
+        background-color: $color-primary-v1;
+        color: $color-white-v1;
+        box-shadow: $color-grey-v2 0px 0px 10px 0px;
+    }
+    .buy-button {
+        background-color: $color-secondary-v1;
+        color: $color-white-v1;
+        font-weight: $font-weight-bold;
+        box-shadow: $color-grey-v2 0px 0px 10px 0px;
+    }
+    .description {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 80%;
+    }
+    .price {
+        color: $color-primary-v1;
+        justify-content: flex-end;
+        display: flex;
+        font-size: $font-size-header-1;
+    }
+    .dis-name {
+        display: flex;
+        flex-direction: row;
+        gap: $gap-section-3;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .dis-name img {
+        width: 1.3rem;
+    }
+    .buttons {
+        display: flex;
+        margin-bottom: 20px;
+        justify-content: flex-end;
+        gap: 30px;
+    }
+    .qa-head {
+        color: $color-primary-v3;
+        justify-content: center;
+    }
+
+    .heading-price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @media screen and (width < $breakpoint-1) {
+        .buttons button {
+            font-size: $font-size-body-1;
+        }
+        .buttons {
+            gap: $gap-section-3;
+        }
+    }
+}
