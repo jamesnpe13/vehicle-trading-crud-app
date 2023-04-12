@@ -124,7 +124,7 @@ export default function CreateListing({ editMode }) {
 
 		if (editMode) {
 			axios
-				.put(`http://localhost:50000/listings/${id}`, reqBody)
+				.put(`http://localhost:5000/listings/${id}`, reqBody)
 				.then((res) => {
 					console.log(res.data);
 					onSuccess();
@@ -137,7 +137,9 @@ export default function CreateListing({ editMode }) {
 	}
 
 	function onSuccess() {
-		navigate("/account");
+		setTimeout(()=>{
+			navigate("/account");
+		} ,2000)
 	}
 
 	function onError() {
