@@ -135,7 +135,7 @@ export default function CreateListing({ editMode }) {
 			axios
 				.post("http://localhost:5000/listings", reqBody)
 				.then((res) => {
-					console.log(res.data);
+					console.log(res);
 					onSuccess();
 				})
 				.catch((err) => {
@@ -160,15 +160,17 @@ export default function CreateListing({ editMode }) {
 
 	
 	function onSuccess() {
-
 		editMode ? handleToast("updated"): handleToast("complete");
 		setTimeout(()=>{
 			navigate("/account");
 		} ,2000)
+		
 	}
 
 	function onError() {
-		//
+		editMode ? handleToast("error"): handleToast("complete");
+
+	
 	}
 
 	
@@ -206,7 +208,7 @@ export default function CreateListing({ editMode }) {
 								</section>
 								<div className="flex-container">
 									<section>
-										<input type="text" className="title" onChange={handleFormChange} data-key="title" placeholder="Title" defaultValue={editMode && listingData && listingData.title} required />
+										<input type="text" className="title" onChange={handleFormChange} data-key="title" placeholder="Title" defaultValue={editMode && listingData && listingData.title} required/>
 
 										<input
 											type="text"
