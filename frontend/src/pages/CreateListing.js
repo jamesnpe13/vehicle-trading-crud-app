@@ -2,6 +2,11 @@ import "./CreateListing.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import Toast from "../components/Toast"
+
+const msgList = {
+	complete: "Successfully created!"
+  };
 
 export default function CreateListing({ editMode }) {
 	const navigate = useNavigate();
@@ -9,6 +14,25 @@ export default function CreateListing({ editMode }) {
 	const [reqBody, setReqBody] = useState({ vehicle: { registration: {}, wof: {} } });
 	const [listingData, setListingData] = useState(null);
 	const [render, setRender] = useState(false);
+
+	const [ToastStatus, setToastStatus] = useState(false);
+	const [ToastMsg, setToastMsg] = useState("");
+  
+	const handleToast = (type) => {
+	  if (!ToastStatus) {
+		setToastStatus(true);
+		setToastMsg(msgList[type]);
+	  }
+	};
+  
+	useEffect(() => {
+	  if (ToastStatus) {
+		setTimeout(() => {
+		  setToastStatus(false);
+		  setToastMsg("");
+		}, 1000);
+	  }
+	}, [ToastStatus]);
 
 	const { id } = useParams();
 
@@ -97,15 +121,11 @@ export default function CreateListing({ editMode }) {
 		}
 	}
 
-	// function delayAndGo(e, path) {
-	// 	e.preventDefault();
-	// 	setTimeout(()=> navigate.push(path),1000);
-	// }
-
 	function handleFormSubmit(e) {
 		e.preventDefault();
 		console.log("sending form");
 		sendRequest();
+		
 	}
 
 	async function sendRequest() {
@@ -136,6 +156,7 @@ export default function CreateListing({ editMode }) {
 		}
 	}
 
+	
 	function onSuccess() {
 		setTimeout(()=>{
 			navigate("/account");
@@ -145,6 +166,10 @@ export default function CreateListing({ editMode }) {
 	function onError() {
 		//
 	}
+
+	
+ 
+	
 
 	// ========== edit mode
 
@@ -266,9 +291,14 @@ export default function CreateListing({ editMode }) {
 										</div>
 									</section>
 								</div>
-								<button type="submit" className="button span primary">
+								<button type="submit" className="button span primary" onClick={() => handleToast("complete")}>
 									{editMode ? "Update listing" : "Submit listing"}
 								</button>
+								{ToastStatus && (
+        <>
+          <Toast msg={ToastMsg} />
+        </>
+      )}
 							</div>
 						</form>
 					)}
