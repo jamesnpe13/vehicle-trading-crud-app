@@ -294,11 +294,8 @@ export default function CreateListing({ editMode }) {
 								<button type="submit" className="button span primary" onClick={() => handleToast("complete")}>
 									{editMode ? "Update listing" : "Submit listing"}
 								</button>
-								{ToastStatus && (
-        <>
-          <Toast msg={ToastMsg} />
-        </>
-      )}
+								{ToastStatus && (<>
+          							<Toast msg={ToastMsg} /></> )}
 							</div>
 						</form>
 					)}
