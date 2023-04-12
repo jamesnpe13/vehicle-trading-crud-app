@@ -5,11 +5,14 @@ const router = express.Router();
 // controllers
 const listingsController = require("../controllers/listingsController");
 
+// middlewares
+const uploadImage = require("../middlewares/imageUploadMiddleware");
+
 router
 	.route("/")
 
 	.get(listingsController.getAllListings)
-	.post(listingsController.createNewListing);
+	.post(uploadImage, listingsController.createNewListing);
 
 router
 	.route("/:id")
@@ -23,5 +26,9 @@ router
 
 	.get(listingsController.getListingComments)
 	.put(listingsController.createNewComment);
+
+router.get("/uploads/:name", (req, res) => {
+	res.download("./uploads/" + req.params.name);
+});
 
 module.exports = router;

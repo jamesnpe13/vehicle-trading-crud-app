@@ -5,11 +5,15 @@ import { useParams } from "react-router-dom";
 
 export default function CreateListing({ editMode }) {
 	const pageTitle = editMode ? "Edit listing" : "Create a new listing";
+	const [imagesArray, setImagesArray] = useState(null);
 	const [reqBody, setReqBody] = useState({ vehicle: { registration: {}, wof: {} } });
 	const [listingData, setListingData] = useState(null);
 	const [render, setRender] = useState(false);
-
 	const { id } = useParams();
+
+	useEffect(() => {
+		console.log(imagesArray);
+	}, [imagesArray]);
 
 	useEffect(() => {
 		if (!editMode) {
@@ -80,6 +84,10 @@ export default function CreateListing({ editMode }) {
 		setReqBody(reqBodyDupe);
 	}
 
+	function handleImageChange(e) {
+		setImagesArray(e.target.files);
+	}
+
 	useEffect(() => {
 		console.log(reqBody);
 	}, [reqBody]);
@@ -99,20 +107,29 @@ export default function CreateListing({ editMode }) {
 	function handleFormSubmit(e) {
 		e.preventDefault();
 		console.log("sending form");
-		sendRequest();
+		let formData = new FormData();
+
+		const bodyStringified = JSON.stringify(reqBody);
+		formData.append("content", bodyStringified);
+
+		for (let image of imagesArray) {
+			formData.append("files", image);
+		}
+
+		sendRequest(formData);
 	}
 
-	async function sendRequest() {
+	async function sendRequest(formData) {
 		if (!editMode) {
 			axios
-				.post("http://localhost:5000/listings", reqBody)
+				.post("http://localhost:5000/listings", formData)
 				.then((res) => console.log(res))
 				.catch((err) => console.log(err));
 		}
 
 		if (editMode) {
 			axios
-				.put(`http://localhost:5000/listings/${id}`, reqBody)
+				.put(`http://localhost:5000/listings/${id}`, formData)
 				.then((res) => console.log(res))
 				.catch((err) => console.log(err));
 		}
@@ -145,6 +162,7 @@ export default function CreateListing({ editMode }) {
 						<form onSubmit={handleFormSubmit}>
 							<div className="section-container">
 								<section>
+									<input type="file" name="files" id="files" onChange={handleImageChange} accept=".jpg, .png" required />
 									<div className="carousel"></div>
 								</section>
 								<div className="flex-container">

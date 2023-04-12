@@ -2,16 +2,6 @@
 const Listing = require("../models/listing");
 const Member = require("../models/member");
 
-// i dont know what this code is for? who the heck wrote this
-// get all listings by a member
-// ==========================================
-// async (req, res) => {
-// 	const result = await Listing.find({ member: req.params.member });
-
-// 	res.json(result);
-// };
-// ==========================================
-
 // get all listings
 exports.getAllListings = async (req, res) => {
 	const result = await Listing.find({}).populate("owner_id");
@@ -32,44 +22,36 @@ exports.getListingById = async (req, res) => {
 
 // create a new listing
 exports.createNewListing = async (req, res) => {
-	const date = new Date();
-
 	const targetUser = await Member.findById(req.body.owner_id);
+
+	const date = new Date();
+	const dateFormat = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
+	const reqBody = JSON.parse(req.body.content);
+	let imagesArray = [];
+
+	for (let image of req.files) {
+		imagesArray.push(image.filename);
+	}
+
 	const newListing = await Listing.create({
-		owner_id: req.body.owner_id,
-		title: req.body.title,
-		description: req.body.description,
-		location: req.body.location,
-		price: req.body.price,
-		post_date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
-		vehicle: {
-			make: req.body.vehicle.make,
-			model: req.body.vehicle.model,
-			year: req.body.vehicle.year,
-			mileage: req.body.vehicle.mileage,
-			transmission: req.body.vehicle.transmission,
-			body_type: req.body.vehicle.body_type,
-			color: req.body.vehicle.color,
-			seats: req.body.vehicle.seats,
-			fuel_type: req.body.vehicle.fuel_type,
-			registration: {
-				valid: req.body.vehicle.registration.valid,
-				registration_number: req.body.vehicle.registration.registration_number,
-				expiration: req.body.vehicle.registration.expiration,
-			},
-			wof: {
-				valid: req.body.vehicle.wof.valid,
-				expiration: req.body.vehicle.wof.expiration,
-			},
-		},
-	}).catch((err) => {
-		res.json(err);
+		...reqBody,
+		images: imagesArray,
+		post_date: dateFormat,
 	});
 
-	targetUser.listings = [...targetUser.listings, newListing];
-	targetUser.save();
+	// targetUser.listings = [...targetUser.listings, newListing];
 
-	res.json(newListing);
+	// targetUser.save();
+
+	console.log(newListing);
+
+	// // targetUser.listings = [...targetUser.listings, newListing];
+	// // targetUser.save();
+
+	// // res.json(newListing);
+	// res.json(req.body);
+	res.send(newListing);
 };
 
 // create new comment
@@ -115,8 +97,8 @@ exports.editListing = async (req, res) => {
 
 // get listing comments
 exports.getListingComments = async (req, res) => {
-	const targetListing = await Listing.findById(req.params.id);
-	const commentsArray = targetListing.comments;
+	const targetListing = await Listing.findById({ _id: req.params.id });
+	// const commentsArray = targetListing.comments;
 
-	res.json(commentsArray);
+	res.json(targetListing);
 };
