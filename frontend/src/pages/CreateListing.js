@@ -5,7 +5,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import Toast from "../components/Toast"
 
 const msgList = {
-	complete: "Successfully created!"
+	complete: "Successfully created!",
+	updated: "Successfully updated!",
+	error: "Failed"
   };
 
 export default function CreateListing({ editMode }) {
@@ -158,6 +160,8 @@ export default function CreateListing({ editMode }) {
 
 	
 	function onSuccess() {
+
+		editMode ? handleToast("updated"): handleToast("complete");
 		setTimeout(()=>{
 			navigate("/account");
 		} ,2000)
@@ -291,7 +295,7 @@ export default function CreateListing({ editMode }) {
 										</div>
 									</section>
 								</div>
-								<button type="submit" className="button span primary" onClick={() => handleToast("complete")}>
+								<button type="submit" className="button span primary" >
 									{editMode ? "Update listing" : "Submit listing"}
 								</button>
 								{ToastStatus && (<>
