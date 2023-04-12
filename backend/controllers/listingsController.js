@@ -22,8 +22,6 @@ exports.getListingById = async (req, res) => {
 
 // create a new listing
 exports.createNewListing = async (req, res) => {
-	const targetUser = await Member.findById(req.body.owner_id);
-
 	const date = new Date();
 	const dateFormat = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
@@ -39,18 +37,11 @@ exports.createNewListing = async (req, res) => {
 		images: imagesArray,
 		post_date: dateFormat,
 	});
+	const targetUser = await Member.findById(reqBody.owner_id);
+	targetUser.listings = [...targetUser.listings, newListing];
 
-	// targetUser.listings = [...targetUser.listings, newListing];
-
-	// targetUser.save();
-
+	targetUser.save();
 	console.log(newListing);
-
-	// // targetUser.listings = [...targetUser.listings, newListing];
-	// // targetUser.save();
-
-	// // res.json(newListing);
-	// res.json(req.body);
 	res.send(newListing);
 };
 
@@ -89,6 +80,7 @@ exports.deleteListing = async (req, res) => {
 // edit listing
 exports.editListing = async (req, res) => {
 	const findListing = await Listing.findById(req.params.id);
+
 	const output = findListing.overwrite(req.body);
 	output.save();
 

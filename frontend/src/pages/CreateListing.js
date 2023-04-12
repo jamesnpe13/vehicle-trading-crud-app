@@ -116,7 +116,11 @@ export default function CreateListing({ editMode }) {
 			formData.append("files", image);
 		}
 
-		sendRequest(formData);
+		if (editMode) {
+			sendRequest(reqBody);
+		} else {
+			sendRequest(formData);
+		}
 	}
 
 	async function sendRequest(formData) {
