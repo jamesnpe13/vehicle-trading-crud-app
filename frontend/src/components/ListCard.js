@@ -10,11 +10,13 @@ import colorimg from "../images/color.svg";
 import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import placeholderImg from "../images/graphic1.svg";
+import placeholderImg from "../images/graphic2.svg";
 import Options from "./Options";
 
 const Card = ({ itemData }) => {
 	const [listingOwned, setListingOwned] = useState(false);
+
+	const thumbnailImage = itemData.images.length > 0 ? `http://localhost:5000/images/${itemData.images[0]}` : placeholderImg;
 
 	useEffect(() => {
 		checkListingOwned();
@@ -38,7 +40,7 @@ const Card = ({ itemData }) => {
 
 	return (
 		<div className="card">
-			<img src={placeholderImg} alt="" className="thumbnail" />
+			<img src={thumbnailImage} alt="" className="thumbnail" />
 
 			<div className="info-container">
 				<h3 className="title">{itemData.title}</h3>
