@@ -11,9 +11,11 @@ import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import placeholderImg from "../images/graphic2.svg";
+import { useNavigate } from "react-router-dom";
 import Options from "./Options";
 
 const Card = ({ itemData }) => {
+	const navigate = useNavigate();
 	const [listingOwned, setListingOwned] = useState(false);
 
 	const thumbnailImage = itemData.images.length > 0 ? `http://localhost:5000/images/${itemData.images[0]}` : placeholderImg;
@@ -38,19 +40,26 @@ const Card = ({ itemData }) => {
 		}
 	}
 
-	return (
-		<div className="card">
-			<img src={thumbnailImage} alt="" className="thumbnail" />
+    // 	console.log(itemData);
+    // }
 
-			<div className="info-container">
-				<h3 className="title">{itemData.title}</h3>
-				<p className="make-model-year">
-					{itemData.vehicle.make} {itemData.vehicle.model} {itemData.vehicle.year}
-				</p>
-				<p className="mileage property">
-					<img src={odometerimg} />
-					{itemData.vehicle.mileage}kms
-				</p>
+    function handleCardClick() {
+        navigate(`/listings/${itemData._id}`);
+    }
+    return (
+        <div className="card" onClick={handleCardClick}>
+            <img src={thumbnailImage} alt="" className="thumbnail" />
+
+            <div className="info-container">
+                <h3 className="title">{itemData.title}</h3>
+                <p className="make-model-year">
+                    {itemData.vehicle.make} {itemData.vehicle.model}{" "}
+                    {itemData.vehicle.year}
+                </p>
+                <p className="mileage property">
+                    <img src={odometerimg} />
+                    {itemData.vehicle.mileage}kms
+                </p>
 
 				<div className="extension">
 					<p className="transmission property">
@@ -74,7 +83,7 @@ const Card = ({ itemData }) => {
 
 			<Options listingOwned={listingOwned} listingId={itemData._id} />
 
-			{/* <Splide
+            {/* <Splide
 				className="splide"
 				options={{
 					rewind: true,
@@ -88,7 +97,7 @@ const Card = ({ itemData }) => {
 				</SplideSlide>
 			</Splide> */}
 
-			{/* <div className="card-info">
+            {/* <div className="card-info">
 				<h2 className="list-title">{itemData.title}</h2>
 				<div className="specs">
 					<div className="main-specs prop-panel">
@@ -133,8 +142,8 @@ const Card = ({ itemData }) => {
 					</div>
 				</div>
 			</div> */}
-		</div>
-	);
+        </div>
+    );
 };
 
 export default Card;

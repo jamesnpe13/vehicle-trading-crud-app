@@ -4,9 +4,9 @@ const Member = require("../models/member");
 
 // get all listings
 exports.getAllListings = async (req, res) => {
-	const result = await Listing.find({}).populate("owner_id");
+    const result = await Listing.find({}).populate("owner_id");
 
-	res.json(result);
+    res.json(result);
 };
 
 // get a listing by ID
@@ -47,34 +47,36 @@ exports.createNewListing = async (req, res) => {
 
 // create new comment
 exports.createNewComment = async (req, res) => {
-	// new array item/object
-	const date = new Date();
-	const newComment = {
-		owner_id: req.body.owner_id,
-		body: req.body.body,
-		post_date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
-	};
+    // new array item/object
+    const date = new Date();
+    const newComment = {
+        owner_id: req.body.owner_id,
+        body: req.body.body,
+        post_date: `${date.getDate()}/${
+            date.getMonth() + 1
+        }/${date.getFullYear()}`,
+    };
 
-	// target document
-	const targetListing = await Listing.findById(req.params.id);
+    // target document
+    const targetListing = await Listing.findById(req.params.id);
 
-	// existing array concatinated with new array item
-	const commentsArray = targetListing.comments.concat(newComment);
+    // existing array concatinated with new array item
+    const commentsArray = targetListing.comments.concat(newComment);
 
-	// manual key-value change
-	targetListing.comments = commentsArray;
+    // manual key-value change
+    targetListing.comments = commentsArray;
 
-	// save changes
-	await targetListing.save();
+    // save changes
+    await targetListing.save();
 
-	// response
-	res.json(targetListing);
+    // response
+    res.json(targetListing);
 };
 
 // delete a listing
 exports.deleteListing = async (req, res) => {
-	await Listing.findByIdAndRemove(req.params.id);
-	res.status(204).end();
+    await Listing.findByIdAndRemove(req.params.id);
+    res.status(204).end();
 };
 
 // edit listing
@@ -84,13 +86,15 @@ exports.editListing = async (req, res) => {
 	const output = findListing.overwrite(req.body);
 	output.save();
 
-	res.json(output);
+    res.json(output);
 };
 
 // get listing comments
 exports.getListingComments = async (req, res) => {
-	const targetListing = await Listing.findById({ _id: req.params.id });
-	// const commentsArray = targetListing.comments;
+    const targetListing = await Listing.findById(req.params.id).populate(
+        "owner_id"
+    );
+    const commentsArray = targetListing.comments;
 
-	res.json(targetListing);
+    res.json(commentsArray);
 };

@@ -111,9 +111,11 @@ export default function CreateListing({ editMode }) {
 
 		const bodyStringified = JSON.stringify(reqBody);
 		formData.append("content", bodyStringified);
-
-		for (let image of imagesArray) {
-			formData.append("files", image);
+		
+		if (!editMode) {
+			for (let image of imagesArray) {
+				formData.append("files", image);
+			}
 		}
 
 		if (editMode) {
