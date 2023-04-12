@@ -90,7 +90,7 @@ export default function Signin() {
 						<form onSubmit={handleSubmit}>
 							<input type="text" placeholder="Username" required={true} onChange={handleChangeUsername} />
 							<input type="password" placeholder="Password" required={true} onChange={handleChangePassword} />
-							<button className="button primary span" type="submit">Sign in</button>
+							<button className="button primary span" type="submit">Submit</button>
 						</form>
 					</div>
 				</div>
