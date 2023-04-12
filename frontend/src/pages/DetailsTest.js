@@ -6,6 +6,7 @@ import person from "../images/person.svg";
 import "./DetailsTest.scss";
 
 import PageLocation from "../components/PageLocation";
+import Carousel from "../components/Carousel";
 
 export default function Details() {
     const pageTitle = "details page";
@@ -52,7 +53,7 @@ export default function Details() {
                         {itemData.vehicle && (
                             <div className="details-wrapper">
                                 <div className="image-wrapper">
-                                    <img src={graphic1} className="main-img" />
+                                    <Carousel itemData={itemData} />
                                 </div>
                                 <div className="heading-price">
                                     <h1>{itemData.title}</h1>
