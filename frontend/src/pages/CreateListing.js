@@ -2,13 +2,13 @@ import "./CreateListing.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import Toast from "../components/Toast"
+import Toast from "../components/Toast";
 
 const msgList = {
 	complete: "Successfully created!",
 	updated: "Successfully updated!",
-	error: "Failed"
-  };
+	error: "Failed",
+};
 
 export default function CreateListing({ editMode }) {
 	const navigate = useNavigate();
@@ -20,21 +20,21 @@ export default function CreateListing({ editMode }) {
 
 	const [ToastStatus, setToastStatus] = useState(false);
 	const [ToastMsg, setToastMsg] = useState("");
-  
+
 	const handleToast = (type) => {
-	  if (!ToastStatus) {
-		setToastStatus(true);
-		setToastMsg(msgList[type]);
-	  }
+		if (!ToastStatus) {
+			setToastStatus(true);
+			setToastMsg(msgList[type]);
+		}
 	};
-  
+
 	useEffect(() => {
-	  if (ToastStatus) {
-		setTimeout(() => {
-		  setToastStatus(false);
-		  setToastMsg("");
-		}, 1000);
-	  }
+		if (ToastStatus) {
+			setTimeout(() => {
+				setToastStatus(false);
+				setToastMsg("");
+			}, 1000);
+		}
 	}, [ToastStatus]);
 
 	const { id } = useParams();
@@ -139,7 +139,7 @@ export default function CreateListing({ editMode }) {
 
 		const bodyStringified = JSON.stringify(reqBody);
 		formData.append("content", bodyStringified);
-		
+
 		if (!editMode) {
 			for (let image of imagesArray) {
 				formData.append("files", image);
@@ -181,24 +181,16 @@ export default function CreateListing({ editMode }) {
 		}
 	}
 
-	
 	function onSuccess() {
-		editMode ? handleToast("updated"): handleToast("complete");
-		setTimeout(()=>{
+		editMode ? handleToast("updated") : handleToast("complete");
+		setTimeout(() => {
 			navigate("/account");
-		} ,2000)
-		
+		}, 2000);
 	}
 
 	function onError() {
-		editMode ? handleToast("error"): handleToast("complete");
-
-	
+		editMode ? handleToast("error") : handleToast("complete");
 	}
-
-	
- 
-	
 
 	// ========== edit mode
 
@@ -227,12 +219,13 @@ export default function CreateListing({ editMode }) {
 						<form onSubmit={handleFormSubmit}>
 							<div className="section-container">
 								<section>
-									{!editMode && <input type="file" name="files" id="files" onChange={handleImageChange} multiple accept=".jpg, .png" required />}
 									<div className="carousel"></div>
 								</section>
 								<div className="flex-container">
 									<section>
-										<input type="text" className="title" onChange={handleFormChange} data-key="title" placeholder="Title" defaultValue={editMode && listingData && listingData.title} required/>
+										{!editMode && <input type="file" name="files" className="upload-button" id="files" onChange={handleImageChange} multiple accept=".jpg, .png" required />}
+										
+										<input type="text" className="title" onChange={handleFormChange} data-key="title" placeholder="Title" defaultValue={editMode && listingData && listingData.title} required />
 
 										<input
 											type="text"
@@ -321,11 +314,14 @@ export default function CreateListing({ editMode }) {
 										</div>
 									</section>
 								</div>
-								<button type="submit" className="button span primary" >
+								<button type="submit" className="button span primary">
 									{editMode ? "Update listing" : "Submit listing"}
 								</button>
-								{ToastStatus && (<>
-          							<Toast msg={ToastMsg} /></> )}
+								{ToastStatus && (
+									<>
+										<Toast msg={ToastMsg} />
+									</>
+								)}
 							</div>
 						</form>
 					)}

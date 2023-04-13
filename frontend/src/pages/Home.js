@@ -1,12 +1,12 @@
 import "./Home.scss";
 import ListingCard from "../components/ListCard";
-import Loading from "../components/Loading";
+import NoData from "../components/NoData";
 import { useEffect, useState } from "react";
 import PageLocation from "../components/PageLocation";
 import Search from "../components/Search";
 export default function Home() {
-    const pageTitle = "Browse listings";
-    const [listingsData, setListingsData] = useState(undefined);
+	const pageTitle = "Browse listings";
+	const [listingsData, setListingsData] = useState(undefined);
 
 	async function fetchData() {
 		const response = await fetch("http://localhost:5000/listings");
@@ -15,12 +15,12 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-		console.log(listingsData)
+		console.log(listingsData);
 	}, [listingsData]);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+	useEffect(() => {
+		fetchData();
+	}, []);
 
 	return (
 		<div className="HomePage page">
@@ -32,10 +32,13 @@ export default function Home() {
 				<div className="content-container">
 					<div className="page-title">{<PageLocation pageTitle={pageTitle} />}</div>
 					<div className="section-container">
-						{listingsData &&
+						{listingsData && listingsData.length > 0 ? (
 							listingsData.map((item) => {
 								return <ListingCard key={item._id} itemData={item} />;
-							})}
+							})
+						) : (
+							<NoData />
+						)}
 					</div>
 				</div>
 			</div>
@@ -44,7 +47,7 @@ export default function Home() {
 }
 
 {
-    /* <div className="chips-container">
+	/* <div className="chips-container">
 	<Chip chipsData={chipsData}>Make</Chip>
 	<Chip chipsData={chipsData}>Year</Chip>
 	<Chip chipsData={chipsData}>Body</Chip>

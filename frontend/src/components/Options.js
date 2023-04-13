@@ -17,7 +17,10 @@ export default function Options({ listingOwned, listingId, optionsButtonRef }) {
 		await fetch(`http://localhost:5000/listings/${listingId}`, {
 			method: "DELETE",
 		})
-			.then((res) => console.log(res))
+			.then((res) => {
+				console.log(res);
+				window.location.reload();
+			})
 			.catch((err) => console.log(err));
 	};
 

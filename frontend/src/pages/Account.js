@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ratingImg from "../images/star.svg";
 import ListingCard from "../components/ListCard";
+import NoData from "../components/NoData";
 
 export default function Account() {
 	const navigate = useNavigate();
@@ -94,21 +95,29 @@ export default function Account() {
 						<section className="my-listings">
 							<h3 className="section-title">{`My listings (${(userListings && userListings.length) || "0"})`}</h3>
 							<div className="listings-container">
-								{userListings &&
+								{userListings && userListings.length > 0 ? (
 									userListings.map((item) => {
 										return <ListingCard key={item._id} itemData={item} />;
-									})}
+									})
+								) : (
+									<NoData />
+								)}
 							</div>
-							<button onClick={()=> navigate(`/account/listings/create`)} className="create-listing button primary span">Create new listing</button>
+							<button onClick={() => navigate(`/account/listings/create`)} className="create-listing button primary span">
+								Create new listing
+							</button>
 						</section>
 
 						<section className="bookmarks">
 							<h3 className="section-title">{`Saved bookmarks (${(userBookmarks && userBookmarks.length) || "0"})`}</h3>
 							<div className="listings-container">
-								{userBookmarks &&
+								{userBookmarks && userBookmarks.length > 0 ? (
 									userBookmarks.map((item) => {
 										return <ListingCard key={item._id} itemData={item} />;
-									})}
+									})
+								) : (
+									<NoData />
+								)}
 							</div>
 						</section>
 					</div>

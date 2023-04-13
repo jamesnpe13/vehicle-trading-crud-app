@@ -2,11 +2,6 @@
 @import "../base/base.scss";
 
 .card {
-	&,
-	* {
-		// outline: 1px solid red;
-	}
-
 	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.26);
 	border-radius: 8px;
 	width: 100%;
@@ -16,6 +11,7 @@
 	gap: $padding-panel-3;
 	position: relative;
 	overflow: hidden;
+	cursor: pointer;
 
 	.thumbnail {
 		height: 100%;
