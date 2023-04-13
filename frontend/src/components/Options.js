@@ -1,15 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Options.scss";
-import axios from "axios";
 import optionsImg from "../images/options.svg";
-import Listcards from "../components/ListCard";
 
-export default function Options({ listingOwned, listingId }) {
+export default function Options({ listingOwned, listingId, optionsButtonRef }) {
 	const navigate = useNavigate();
 	const [dropdownIsActive, setDropdownIsActive] = useState(false);
 	const toggleDropdown = () => setDropdownIsActive(!dropdownIsActive);
-	const ref = useRef(null);
+	// const ref = useRef(null);
 
 	const handleDelete = () => {
 		deleteListing();
@@ -51,7 +49,7 @@ export default function Options({ listingOwned, listingId }) {
 
 	useEffect(() => {
 		let handler = (e) => {
-			if (!ref.current.contains(e.target)) {
+			if (!optionsButtonRef.current.contains(e.target)) {
 				setDropdownIsActive(false);
 			}
 		};
@@ -64,7 +62,7 @@ export default function Options({ listingOwned, listingId }) {
 	});
 
 	return (
-		<div ref={ref} className="Options">
+		<div ref={optionsButtonRef} className="Options">
 			<button onClick={toggleDropdown}>
 				<img src={optionsImg} />
 			</button>
