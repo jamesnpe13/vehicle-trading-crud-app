@@ -1,15 +1,14 @@
 import "./Signin.scss";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SignedInContext } from "../App";
 import { useNavigate } from "react-router-dom";
-
-
+import vroomLogo from "../images/logo2.svg";
+import carBg from "../images/bgCar.svg";
+import IntroAnim from "../components/IntroAnim";
 export default function Signin() {
-	const pageTitle = "Sign in";
 	const navigate = useNavigate();
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
 	const [userInput, setUserInput] = useState({});
-	
 
 	// check if user signed in
 	useEffect(() => {
@@ -65,7 +64,6 @@ export default function Signin() {
 		}
 	}
 
-
 	function saveUserData(data) {
 		const { _id, username, display_name } = data;
 
@@ -85,19 +83,31 @@ export default function Signin() {
 	}
 
 	return (
-		<div className="Signin page">
-			<div className="main">
-				<div className="content-container">
-					<div className="page-title">{pageTitle}</div>
-					<div className="section-container">
+		<React.Fragment>
+			{/* <IntroAnim /> */}
+			<div className="Signin page" id="signin">
+				<div className="main">
+					<div className="content-container">
+						<img className="logo1" src={vroomLogo} alt="" />
+						<h3 className="page-title">
+							Let's get you
+							<br /> signed in.
+						</h3>
 						<form onSubmit={handleSubmit}>
 							<input type="text" placeholder="Username" required={true} onChange={handleChangeUsername} />
 							<input type="password" placeholder="Password" required={true} onChange={handleChangePassword} />
-							<button className="button primary span" type="submit">Submit</button>
+							<button className="button primary span" type="submit">
+								Sign in
+							</button>
+							<p className="register">Create an account</p>
 						</form>
+					</div>
+					<div className="background">
+						<img className="car" src={carBg} alt="" />
+						<img className="logo" src={vroomLogo} alt="" />
 					</div>
 				</div>
 			</div>
-		</div>
+		</React.Fragment>
 	);
 }

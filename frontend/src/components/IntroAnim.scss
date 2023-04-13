@@ -1,0 +1,9 @@
+@import "../base/base.scss";
+
+.IntroAnim {
+	height: 100vh;
+	width: 100vw;
+	z-index: 100;
+	position: absolute;
+	background-color: $color-white-v1;
+}

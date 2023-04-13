@@ -2,11 +2,14 @@ import "./Home.scss";
 import ListingCard from "../components/ListCard";
 import NoData from "../components/NoData";
 import { useEffect, useState } from "react";
+import { useNavigate, userNavigate } from "react-router-dom";
 import PageLocation from "../components/PageLocation";
 import Search from "../components/Search";
+import searchGraphic from "../images/searchGraphic.svg";
 export default function Home() {
 	const pageTitle = "Browse listings";
 	const [listingsData, setListingsData] = useState(undefined);
+	const navigate = useNavigate();
 
 	async function fetchData() {
 		const response = await fetch("http://localhost:5000/listings");
@@ -37,7 +40,17 @@ export default function Home() {
 								return <ListingCard key={item._id} itemData={item} />;
 							})
 						) : (
-							<NoData />
+							<>
+								<NoData />
+								<img className="search-graphic" src={searchGraphic} />
+								<button
+									className="button span primary"
+									onClick={() => {
+										navigate("/account/listings/create");
+									}}>
+									Create listing
+								</button>
+							</>
 						)}
 					</div>
 				</div>
