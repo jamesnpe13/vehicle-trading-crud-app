@@ -1,7 +1,8 @@
-import "./CreateListing.scss";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+
+import "./CreateListing.scss";
 import Toast from "../components/Toast";
 
 const msgList = {
@@ -224,7 +225,7 @@ export default function CreateListing({ editMode }) {
 								<div className="flex-container">
 									<section>
 										{!editMode && <input type="file" name="files" className="upload-button" id="files" onChange={handleImageChange} multiple accept=".jpg, .png" required />}
-										
+
 										<input type="text" className="title" onChange={handleFormChange} data-key="title" placeholder="Title" defaultValue={editMode && listingData && listingData.title} required />
 
 										<input

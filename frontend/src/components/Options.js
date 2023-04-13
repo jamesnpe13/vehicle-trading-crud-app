@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 import "./Options.scss";
 import optionsImg from "../images/options.svg";
 
@@ -8,7 +9,6 @@ export default function Options({ listingOwned, listingId, optionsButtonRef }) {
 	const navigate = useNavigate();
 	const [dropdownIsActive, setDropdownIsActive] = useState(false);
 	const toggleDropdown = () => setDropdownIsActive(!dropdownIsActive);
-	// const ref = useRef(null);
 
 	const handleDelete = () => {
 		deleteListing();

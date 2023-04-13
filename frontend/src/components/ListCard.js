@@ -1,12 +1,13 @@
 import "./ListCard.scss";
+import "@splidejs/react-splide/css";
+import { useNavigate } from "react-router-dom";
+
 import locationimg from "../images/location.svg";
 import carimg from "../images/car.svg";
 import odometerimg from "../images/odometer.svg";
 import transmissionimg from "../images/transmission.svg";
 import React, { useEffect, useState, useRef } from "react";
-import "@splidejs/react-splide/css";
 import placeholderImg from "../images/graphic2.svg";
-import { useNavigate } from "react-router-dom";
 import Options from "./Options";
 
 const Card = ({ itemData }) => {

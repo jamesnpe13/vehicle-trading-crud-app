@@ -1,7 +1,5 @@
 import "./App.scss";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 // components
 import Navbar from "./components/Navbar";
