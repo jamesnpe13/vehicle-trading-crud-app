@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import "./Comments.scss";
 import axios from "axios";
+
+import "./Comments.scss";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
 const Comments = ({ commentsArray, itemId, fetchItemData }) => {
 	console.log(itemId);
-	const user = JSON.parse(window.localStorage.getItem("active_user"))._id;
+
 	const [commentBody, setCommentBody] = useState("");
 	const [reqBody, setReqBody] = useState({});
 	const [commentsData, setCommentsData] = useState([]);

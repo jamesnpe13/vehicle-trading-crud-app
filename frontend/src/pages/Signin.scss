@@ -8,9 +8,6 @@
 		flex-direction: row-reverse;
 		overflow: hidden;
 		.content-container {
-			// position: absolute;
-			// right: 0;
-			// height: 100%;
 			flex-shrink: 0;
 			height: 100%;
 			max-width: 450px;
@@ -95,10 +92,6 @@
 					filter: drop-shadow(3px 3px 15px rgba(0, 0, 0, 0.16));
 				}
 
-				// .page-title {
-				// 	font-size: $font-size-header-2;
-				// }
-
 				form {
 					button {
 						margin-block: 10px;
@@ -107,7 +100,6 @@
 						// color: white;
 					}
 				}
-
 			}
 
 			.background {

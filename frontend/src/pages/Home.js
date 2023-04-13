@@ -58,13 +58,3 @@ export default function Home() {
 		</div>
 	);
 }
-
-{
-	/* <div className="chips-container">
-	<Chip chipsData={chipsData}>Make</Chip>
-	<Chip chipsData={chipsData}>Year</Chip>
-	<Chip chipsData={chipsData}>Body</Chip>
-	<Chip chipsData={chipsData}>Transmission</Chip>
-	<Chip chipsData={chipsData}>Color</Chip>
-</div>; */
-}

@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comments from "../components/Comments";
-import graphic1 from "../images/graphic1.svg";
 import person from "../images/person.svg";
 import "./DetailsTest.scss";
-
-import PageLocation from "../components/PageLocation";
 import Carousel from "../components/Carousel";
 
 export default function Details() {
-	const pageTitle = "details page";
-
 	const { id } = useParams();
 	const [itemData, setItemData] = useState({});
 	const [ownerData, setOwnerData] = useState({});

@@ -58,7 +58,6 @@
 					margin-bottom: 30px;
 
 					.listing-item {
-						// background-color: white;
 						padding-block: $padding-panel-2;
 						display: flex;
 						justify-content: space-between;
@@ -71,10 +70,6 @@
 						p {
 							font-size: $font-size-body-2;
 						}
-
-						// &:nth-of-type(even) {
-						// 	background-color: $color-grey-v1;
-						// }
 					}
 				}
 			}

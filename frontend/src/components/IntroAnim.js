@@ -1,6 +1,7 @@
-import "./IntroAnim.scss";
-import logo from "../images/logo2.svg";
 import { useEffect, useState } from "react";
+import logo from "../images/logo2.svg";
+
+import "./IntroAnim.scss";
 
 export default function IntroAnim() {
 	const transitionDelay = 500;

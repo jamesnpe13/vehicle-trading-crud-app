@@ -1,10 +1,11 @@
-import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
+import * as AiIcons from "react-icons/ai";
+
 import logo from "../images/logo.png";
 import hamburger from "../images/hamburger.png";
-import * as AiIcons from "react-icons/ai";
 import { SignedInContext } from "../App";
+import "./Navbar.scss";
 
 const Navbar = () => {
 	const [sidebar, setSidebar] = useState(false);
