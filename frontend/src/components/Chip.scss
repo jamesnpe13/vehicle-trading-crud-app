@@ -1,15 +1,24 @@
 .Chip {
-    border: 1px solid white;
-    width: max-content;
-    padding: 3px 15px;
-    border-radius: 50px;
-    display: grid;
-    cursor: pointer;
-    user-select: none;
-    display: flex;
+	border: 1px solid white;
+	width: max-content;
+	padding: 3px 15px;
+	border-radius: 50px;
+	display: grid;
+	cursor: pointer;
+	user-select: none;
+	display: flex;
 
-    span {
-        color: white;
-        font-size: 0.8em;
-    }
+	outline: 1px solid red;
+
+	// p {
+	// 	outline: 1.5px solid $color-grey-v2;
+	// 	border-radius: 100px;
+	// 	margin: 5px;
+	// 	padding: 10px;
+	// }
+
+	span {
+		color: white;
+		font-size: 0.8em;
+	}
 }
