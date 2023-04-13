@@ -23,6 +23,7 @@ body {
 }
 
 .button {
+	font-family: "poppins", sans-serif;
 	background-color: $color-primary-v1;
 	color: $color-white-v1;
 	padding: 10px 20px;
@@ -143,10 +144,12 @@ select {
 				gap: $gap-section-3;
 
 				.page-title {
-					font-size: $font-size-header-3;
+					font-size: $font-size-header-2;
 					color: $color-primary-v1;
 					font-weight: $font-weight-black;
 					margin-bottom: $padding-panel-2;
+				
+
 				}
 			}
 		}

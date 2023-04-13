@@ -1,14 +1,42 @@
 import "./CreateListing.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import Toast from "../components/Toast"
+
+const msgList = {
+	complete: "Successfully created!",
+	updated: "Successfully updated!",
+	error: "Failed"
+  };
 
 export default function CreateListing({ editMode }) {
+	const navigate = useNavigate();
 	const pageTitle = editMode ? "Edit listing" : "Create a new listing";
 	const [imagesArray, setImagesArray] = useState(null);
 	const [reqBody, setReqBody] = useState({ vehicle: { registration: {}, wof: {} } });
 	const [listingData, setListingData] = useState(null);
 	const [render, setRender] = useState(false);
+
+	const [ToastStatus, setToastStatus] = useState(false);
+	const [ToastMsg, setToastMsg] = useState("");
+  
+	const handleToast = (type) => {
+	  if (!ToastStatus) {
+		setToastStatus(true);
+		setToastMsg(msgList[type]);
+	  }
+	};
+  
+	useEffect(() => {
+	  if (ToastStatus) {
+		setTimeout(() => {
+		  setToastStatus(false);
+		  setToastMsg("");
+		}, 1000);
+	  }
+	}, [ToastStatus]);
+
 	const { id } = useParams();
 
 	useEffect(() => {
@@ -129,17 +157,48 @@ export default function CreateListing({ editMode }) {
 		if (!editMode) {
 			axios
 				.post("http://localhost:5000/listings", formData)
-				.then((res) => console.log(res))
-				.catch((err) => console.log(err));
+				.then((res) => {
+					console.log(res);
+					onSuccess();
+				})
+				.catch((err) => {
+					console.log(err);
+					onError();
+				});
 		}
 
 		if (editMode) {
 			axios
 				.put(`http://localhost:5000/listings/${id}`, formData)
-				.then((res) => console.log(res))
-				.catch((err) => console.log(err));
+				.then((res) => {
+					console.log(res.data);
+					onSuccess();
+				})
+				.catch((err) => {
+					console.log(err);
+					onError();
+				});
 		}
 	}
+
+	
+	function onSuccess() {
+		editMode ? handleToast("updated"): handleToast("complete");
+		setTimeout(()=>{
+			navigate("/account");
+		} ,2000)
+		
+	}
+
+	function onError() {
+		editMode ? handleToast("error"): handleToast("complete");
+
+	
+	}
+
+	
+ 
+	
 
 	// ========== edit mode
 
@@ -173,7 +232,7 @@ export default function CreateListing({ editMode }) {
 								</section>
 								<div className="flex-container">
 									<section>
-										<input type="text" className="title" onChange={handleFormChange} data-key="title" placeholder="Title" defaultValue={editMode && listingData && listingData.title} required />
+										<input type="text" className="title" onChange={handleFormChange} data-key="title" placeholder="Title" defaultValue={editMode && listingData && listingData.title} required/>
 
 										<input
 											type="text"
@@ -262,9 +321,11 @@ export default function CreateListing({ editMode }) {
 										</div>
 									</section>
 								</div>
-								<button type="submit" className="button span primary">
+								<button type="submit" className="button span primary" >
 									{editMode ? "Update listing" : "Submit listing"}
 								</button>
+								{ToastStatus && (<>
+          							<Toast msg={ToastMsg} /></> )}
 							</div>
 						</form>
 					)}

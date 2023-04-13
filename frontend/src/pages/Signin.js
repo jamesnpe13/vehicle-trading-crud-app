@@ -3,11 +3,13 @@ import { useContext, useEffect, useState } from "react";
 import { SignedInContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Signin() {
 	const pageTitle = "Sign in";
 	const navigate = useNavigate();
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
 	const [userInput, setUserInput] = useState({});
+	
 
 	// check if user signed in
 	useEffect(() => {
@@ -63,6 +65,7 @@ export default function Signin() {
 		}
 	}
 
+
 	function saveUserData(data) {
 		const { _id, username, display_name } = data;
 
@@ -90,7 +93,7 @@ export default function Signin() {
 						<form onSubmit={handleSubmit}>
 							<input type="text" placeholder="Username" required={true} onChange={handleChangeUsername} />
 							<input type="password" placeholder="Password" required={true} onChange={handleChangePassword} />
-							<button className="button primary span" type="submit">Sign in</button>
+							<button className="button primary span" type="submit">Submit</button>
 						</form>
 					</div>
 				</div>
