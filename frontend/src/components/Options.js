@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Options.scss";
 import optionsImg from "../images/options.svg";
 
@@ -40,7 +41,9 @@ export default function Options({ listingOwned, listingId, optionsButtonRef }) {
 		notOwner: () => {
 			return (
 				<>
-					<p className="option">Bookmark</p>
+					<p className="option" data-path={`/account`} onClick={addBookmark}>
+						Bookmark
+					</p>
 				</>
 			);
 		},
@@ -48,6 +51,18 @@ export default function Options({ listingOwned, listingId, optionsButtonRef }) {
 
 	function handleOptionSelect(e) {
 		navigate(e.target.getAttribute("data-path"));
+	}
+
+	async function addBookmark(e) {
+		const userId = JSON.parse(window.localStorage.getItem("active_user"))._id;
+
+		axios
+			.put(`http://localhost:5000/members/${userId}/bookmarks`, { listing_id: listingId })
+			.then((res) => {
+				console.log(res);
+				handleOptionSelect(e);
+			})
+			.catch((err) => console.log(err));
 	}
 
 	useEffect(() => {

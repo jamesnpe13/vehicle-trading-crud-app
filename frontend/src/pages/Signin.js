@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import vroomLogo from "../images/logo2.svg";
 import carBg from "../images/bgCar.svg";
 import IntroAnim from "../components/IntroAnim";
+import axios from "axios";
 export default function Signin() {
 	const navigate = useNavigate();
 	const [signedIn, setSignedIn] = useContext(SignedInContext);
@@ -82,6 +83,29 @@ export default function Signin() {
 		navigate("/listings");
 	}
 
+	function registerUser() {
+		const newUserObject = {
+			display_name: prompt("Display name. What name do you want other users to see?"),
+			username: prompt("Username. Used to sign in."),
+			password: prompt("Password."),
+		};
+
+		sendRegistration(newUserObject) && alert(`Welcome, ${newUserObject.display_name}. Your account has been created. Please sign in.`);
+	}
+
+	async function sendRegistration(newUserObject) {
+		axios
+			.post("http://localhost:5000/members", newUserObject)
+			.then((res) => {
+				console.log(res);
+				return true;
+			})
+			.catch((err) => {
+				console.log(err);
+				return false;
+			});
+	}
+
 	return (
 		<React.Fragment>
 			{/* <IntroAnim /> */}
@@ -99,7 +123,9 @@ export default function Signin() {
 							<button className="button primary span" type="submit">
 								Sign in
 							</button>
-							<p className="register">Create an account</p>
+							<p className="register" onClick={registerUser}>
+								Create an account
+							</p>
 						</form>
 					</div>
 					<div className="background">
