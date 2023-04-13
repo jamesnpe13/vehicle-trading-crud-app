@@ -43,15 +43,15 @@ export default function Home() {
 							<>
 								<NoData />
 								<img className="search-graphic" src={searchGraphic} />
-								<button
-									className="button span primary"
-									onClick={() => {
-										navigate("/account/listings/create");
-									}}>
-									Create listing
-								</button>
 							</>
 						)}
+						<button
+							className="button span primary"
+							onClick={() => {
+								navigate("/account/listings/create");
+							}}>
+							Create new listing
+						</button>
 					</div>
 				</div>
 			</div>
