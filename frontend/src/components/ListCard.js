@@ -1,14 +1,9 @@
 import "./ListCard.scss";
 import locationimg from "../images/location.svg";
 import carimg from "../images/car.svg";
-import fuelimg from "../images/fuel.svg";
 import odometerimg from "../images/odometer.svg";
-import personimg from "../images/person.svg";
 import transmissionimg from "../images/transmission.svg";
-import yearimg from "../images/year.svg";
-import colorimg from "../images/color.svg";
-import React, { useEffect, useState } from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import React, { useEffect, useState, useRef } from "react";
 import "@splidejs/react-splide/css";
 import placeholderImg from "../images/graphic2.svg";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +11,8 @@ import Options from "./Options";
 
 const Card = ({ itemData }) => {
 	const navigate = useNavigate();
+	const optionsButtonRef = useRef(null);
+	const cardRef = useRef(null);
 	const [listingOwned, setListingOwned] = useState(false);
 
 	const thumbnailImage = itemData.images.length > 0 ? `http://localhost:5000/images/${itemData.images[0]}` : placeholderImg;
@@ -40,26 +37,40 @@ const Card = ({ itemData }) => {
 		}
 	}
 
-    // 	console.log(itemData);
-    // }
+	useEffect(() => {
+		let handler = (e) => {
+			if (cardRef.current.contains(e.target)) {
+				if (!optionsButtonRef.current.contains(e.target)) {
+					console.log("outside");
+					handleCardClick();
+				}
+			}
+		};
 
-    function handleCardClick() {
-        navigate(`/listings/${itemData._id}`);
-    }
-    return (
-        <div className="card" onClick={handleCardClick}>
-            <img src={thumbnailImage} alt="" className="thumbnail" />
+		document.addEventListener("mousedown", handler);
 
-            <div className="info-container">
-                <h3 className="title">{itemData.title}</h3>
-                <p className="make-model-year">
-                    {itemData.vehicle.make} {itemData.vehicle.model}{" "}
-                    {itemData.vehicle.year}
-                </p>
-                <p className="mileage property">
-                    <img src={odometerimg} />
-                    {itemData.vehicle.mileage}kms
-                </p>
+		return () => {
+			document.removeEventListener("mousedown", handler);
+		};
+	});
+
+	function handleCardClick() {
+		navigate(`/listings/${itemData._id}`);
+	}
+
+	return (
+		<div ref={cardRef} className="card">
+			<img src={thumbnailImage} alt="" className="thumbnail" />
+
+			<div className="info-container">
+				<h3 className="title">{itemData.title}</h3>
+				<p className="make-model-year">
+					{itemData.vehicle.make} {itemData.vehicle.model} {itemData.vehicle.year}
+				</p>
+				<p className="mileage property">
+					<img src={odometerimg} />
+					{itemData.vehicle.mileage}kms
+				</p>
 
 				<div className="extension">
 					<p className="transmission property">
@@ -81,69 +92,9 @@ const Card = ({ itemData }) => {
 				<p className="price">${itemData.price}</p>
 			</div>
 
-			<Options listingOwned={listingOwned} listingId={itemData._id} />
-
-            {/* <Splide
-				className="splide"
-				options={{
-					rewind: true,
-				}}>
-				<SplideSlide>
-					<img src="https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image.png" alt="img1"></img>
-				</SplideSlide>
-
-				<SplideSlide>
-					<img src="https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image.png" alt="img2"></img>
-				</SplideSlide>
-			</Splide> */}
-
-            {/* <div className="card-info">
-				<h2 className="list-title">{itemData.title}</h2>
-				<div className="specs">
-					<div className="main-specs prop-panel">
-						<p className="price">{`$${itemData.price}`}</p>
-						<div className="item-property">
-							<img src={carimg}></img>
-							<p>
-								{itemData.vehicle.year} {itemData.vehicle.make} {itemData.vehicle.model}
-							</p>
-						</div>
-						<div className="item-property">
-							<img src={personimg}></img>
-							<p>{itemData.owner_id.display_name}</p>
-						</div>
-						<div className="item-property">
-							<img src={locationimg}></img>
-							<p>{itemData.location}</p>
-						</div>
-						<p className="description">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur nobis dolores sunt, et deleniti repellendus ullam sit rem voluptatibus neque maiores, quidem quibusdam suscipit ad voluptatem laborum cum cupiditate quam
-							obcaecati, explicabo illum ipsa fugiat sint corrupti. Laboriosam voluptate debitis earum veniam. Harum ducimus, id accusamus repudiandae nesciunt eveniet quam.
-						</p>
-					</div>
-
-					<div className="detail-specs prop-panel">
-						<div className="item-property">
-							<img src={odometerimg}></img>
-							<p>{itemData.vehicle.mileage} km</p>
-						</div>
-						<div className="item-property">
-							<img src={personimg}></img>
-							<p>{"[SEATS]"}</p>
-						</div>
-						<div className="item-property">
-							<img src={fuelimg}></img>
-							<p>{"[FUEL TYPE]"}</p>
-						</div>
-						<div className="item-property">
-							<img src={transmissionimg}></img>
-							<p>{itemData.vehicle.transmission}</p>
-						</div>
-					</div>
-				</div>
-			</div> */}
-        </div>
-    );
+			<Options listingOwned={listingOwned} listingId={itemData._id} optionsButtonRef={optionsButtonRef} />
+		</div>
+	);
 };
 
 export default Card;

@@ -227,7 +227,7 @@ export default function CreateListing({ editMode }) {
 						<form onSubmit={handleFormSubmit}>
 							<div className="section-container">
 								<section>
-									{!editMode && <input type="file" name="files" id="files" onChange={handleImageChange} accept=".jpg, .png" required />}
+									{!editMode && <input type="file" name="files" id="files" onChange={handleImageChange} multiple accept=".jpg, .png" required />}
 									<div className="carousel"></div>
 								</section>
 								<div className="flex-container">
