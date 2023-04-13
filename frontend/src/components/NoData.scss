@@ -1,0 +1,31 @@
+@import "../base/base.scss";
+
+.NoData {
+	h2 {
+		font-size: $font-size-header-1;
+		font-weight: $font-weight-normal;
+		color: $color-tertiary-v1;
+		// animation-name: loopAnim;
+		animation-duration: 3s;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite;
+	}
+
+	@keyframes loopAnim {
+		0% {
+			opacity: 0;
+			// transform: translateX(-50%);
+		}
+		10% {
+			opacity: 1;
+		}
+		90% {
+			opacity: 1;
+			// transform: translateX(0);
+		}
+		100% {
+			opacity: 0;
+			// transform: translateX(10%);
+		}
+	}
+}

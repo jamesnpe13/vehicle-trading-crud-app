@@ -17,6 +17,9 @@
 		img {
 			width: 20px;
 		}
+		&:hover {
+			background-color: mix($color-primary-v2, white, 40%);
+		}
 	}
 
 	.dropdown {

@@ -9,6 +9,13 @@
 				display: flex;
 				flex-direction: column;
 				gap: $gap-section-2;
+
+				.search-graphic {
+					width: 100%;
+					max-width: 300px;
+					margin-inline: auto;
+					margin-block: 50px;
+				}
 			}
 		}
 	}

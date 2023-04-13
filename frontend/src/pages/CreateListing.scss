@@ -17,6 +17,24 @@
 				gap: $gap-section-3;
 				width: 100%;
 
+				.upload-button {
+					font-size: $font-size-body-1;
+					font-family: inherit;
+					padding: 32px $padding-panel-3;
+					padding-inline: auto;
+					border-radius: 5px;
+					outline: none;
+
+					&::-webkit-file-upload-button {
+						border: none;
+						background-color: $color-secondary-v1;
+						color: white;
+						padding: 10px 20px;
+						border-radius: 5px;
+						cursor: pointer;
+					}
+				}
+
 				.property {
 					display: flex;
 					gap: $gap-section-3;
@@ -58,9 +76,9 @@
 
 .btnWrap {
 	padding-top: 50px;
-  }
-  
-  button {
+}
+
+button {
 	background: lightseagreen;
 	color: #fff;
 	padding: 10px 15px;
@@ -69,12 +87,12 @@
 	font-weight: bold;
 	cursor: pointer;
 	margin-right: 10px;
-  }
-  
-  button:hover {
+}
+
+button:hover {
 	background: darkcyan;
-  }
-  
+}
+
 //   .toast {
 // 	position: absolute;
 // 	top: 50%;
@@ -101,10 +119,4 @@
 	color: #fff;
 	border-radius: 4px;
 	border: 1px solid #74ac6c;
-  }
-
-  
-  
-  
-  
-  
+}

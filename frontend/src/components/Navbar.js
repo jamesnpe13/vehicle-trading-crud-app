@@ -67,41 +67,43 @@ const Navbar = () => {
 	}
 
 	return (
-		<div className="navbar">
-			<img className="logo" src={logo} alt="logo" onClick={() => navigate("/listings")} />
+		signedIn && (
+			<div className="navbar">
+				<img className="logo" src={logo} alt="logo" onClick={() => navigate("/listings")} />
 
-			{signedIn && (
-				<div className="links-desktop">
-					{navLinks.browse()}
-					{navLinks.createListing()}
-					{navLinks.account()}
-					{navLinks.signout()}
-					{navLinks.activeUser()}
-				</div>
-			)}
-
-			{signedIn && (
-				<React.Fragment>
-					<img onClick={showSidebar} className="hamburger disabled" src={hamburger} />
-
-					<nav className={sidebar ? "nav-menu active" : "nav-menu"} onClick={showSidebar}>
-						<div className="close-button">
-							<AiIcons.AiOutlineClose />
-						</div>
+				{signedIn && (
+					<div className="links-desktop">
+						{navLinks.browse()}
+						{navLinks.createListing()}
+						{navLinks.account()}
+						{navLinks.signout()}
 						{navLinks.activeUser()}
-						<ul className="links-group">
-							<li className={"nav-text-b"}>{navLinks.browse()}</li>
-							<li className={"nav-text-b"}>{navLinks.createListing()}</li>
-						</ul>
+					</div>
+				)}
 
-						<ul className="links-group">
-							<li className={"nav-text-b"}>{navLinks.account()}</li>
-							<li className="nav-text-b">{navLinks.signout()}</li>
-						</ul>
-					</nav>
-				</React.Fragment>
-			)}
-		</div>
+				{signedIn && (
+					<React.Fragment>
+						<img onClick={showSidebar} className="hamburger disabled" src={hamburger} />
+
+						<nav className={sidebar ? "nav-menu active" : "nav-menu"} onClick={showSidebar}>
+							<div className="close-button">
+								<AiIcons.AiOutlineClose />
+							</div>
+							{navLinks.activeUser()}
+							<ul className="links-group">
+								<li className={"nav-text-b"}>{navLinks.browse()}</li>
+								<li className={"nav-text-b"}>{navLinks.createListing()}</li>
+							</ul>
+
+							<ul className="links-group">
+								<li className={"nav-text-b"}>{navLinks.account()}</li>
+								<li className="nav-text-b">{navLinks.signout()}</li>
+							</ul>
+						</nav>
+					</React.Fragment>
+				)}
+			</div>
+		)
 	);
 };
 
