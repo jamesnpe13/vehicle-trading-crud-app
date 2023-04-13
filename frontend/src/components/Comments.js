@@ -12,7 +12,6 @@ const Comments = ({ commentsArray, itemId, fetchItemData }) => {
 	const [commentsData, setCommentsData] = useState([]);
 	useEffect(() => {
 		insertDateAndId();
-		fetchComments();
 	}, []);
 	function insertDateAndId() {
 		const ownerId = JSON.parse(window.localStorage.getItem("active_user"))._id;
@@ -58,14 +57,19 @@ const Comments = ({ commentsArray, itemId, fetchItemData }) => {
 				body: commentBody,
 			})
 			.then((res) => {
-				console.log(res);
-				fetchItemData();
+				console.log("SUBMITTED");
+				fetchComments();
 			})
 			.catch((err) => console.log(err));
 	}
 
+	useEffect(() => {
+		itemId && fetchComments();
+	}, [itemId]);
+
 	async function fetchComments() {
-		const response = await fetch("http://localhost:5000/listings/64381cb3b90cc36ee57613df/comments");
+		console.log(itemId);
+		const response = await fetch(`http://localhost:5000/listings/${itemId}/comments`);
 
 		const data = await response.json();
 
